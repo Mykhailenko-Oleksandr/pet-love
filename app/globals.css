@@ -1,13 +1,4 @@
 /* =====================================
-============== Variables ===============
-======================================== */
-
-:root {
-  --color-neutral-darkest: #000;
-  --color-white: #fff;
-}
-
-/* =====================================
 ================ Base ==================
 ======================================== */
 
@@ -20,7 +11,7 @@ html {
 }
 
 body {
-  font-family: var(--font-roboto), sans-serif;
+  font-family: var(--font-manrope), sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -89,6 +80,8 @@ button {
   cursor: pointer;
   font-family: inherit;
   color: currentColor;
+  border: none;
+  outline: none;
 }
 
 img {
@@ -131,14 +124,13 @@ textarea:-webkit-autofill:focus {
 
 @media only screen and (min-width: 768px) {
   .container {
-    max-width: 768px;
+    width: 768px;
     padding: 0 32px;
   }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1280px) {
   .container {
-    max-width: 1440px;
-    padding: 0 64px;
+    width: 1280px;
   }
 }
