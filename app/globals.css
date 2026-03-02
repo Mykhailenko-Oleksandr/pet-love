@@ -6,10 +6,6 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   font-family: var(--font-manrope), sans-serif;
   display: flex;
@@ -18,12 +14,12 @@ body {
   margin: 0;
   background-color: var(--color-white);
 
-  color: var(--color-neutral-darkest);
-  line-height: 150%;
+  color: #262626;
+  line-height: 125%;
 
   transition: all 250ms ease;
 
-  &.no-scroll {
+  &.noScroll {
     overflow: hidden;
   }
 }
