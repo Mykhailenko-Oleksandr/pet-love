@@ -6,10 +6,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Nav from "../Nav/Nav";
 import AuthNav from "../AuthNav/AuthNav";
+import { useState } from "react";
+import BurgerMenu from "../BurgerMenu/BurgerMenu";
 
 export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
-  console.log(pathname);
 
   return (
     <header className={css.header}>
@@ -32,12 +34,24 @@ export default function Header() {
 
         <div className={css.rightBox}>
           <AuthNav />
-          <button className={css.burgerMenu} type="button" aria-label="Menu">
+
+          <button
+            className={css.burgerMenuBtn}
+            type="button"
+            aria-label="Menu"
+            onClick={() => setIsMenuOpen(true)}
+          >
             <svg>
               <use href="/sprite.svg#menu"></use>
             </svg>
           </button>
         </div>
+
+        <BurgerMenu
+          isOpen={isMenuOpen}
+          onClose={() => setIsMenuOpen(false)}
+          homePage={pathname === "/"}
+        />
       </div>
     </header>
   );

@@ -42,6 +42,24 @@
   }
 }
 
+/* Стилі коли компонент знаходиться в бургер-меню*/
+.nav.isMenu {
+  position: static;
+  left: unset;
+  transform: translateX(0);
+
+  display: flex;
+  flex-direction: column;
+
+  & .link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 119px;
+  }
+}
+
 @media only screen and (min-width: 1280px) {
   .nav {
     display: flex;

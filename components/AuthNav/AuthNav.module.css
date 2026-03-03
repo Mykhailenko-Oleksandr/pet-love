@@ -54,8 +54,50 @@
   }
 }
 
+/* Стилі коли компонент знаходиться в бургер-меню*/
+.box.isMenu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  & .link {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  & .link:not(.registerLink) {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 14px 34px;
+    color: #fff;
+
+    &:hover,
+    &:focus {
+      border-color: #fff4df;
+      background-color: #fff4df;
+      color: #f6b83d;
+    }
+  }
+
+  /* Стилі коли компонент знаходиться в бургер-меню і на Home Page*/
+  &.homePage .link:not(.registerLink) {
+    border: none;
+    color: #fff;
+
+    &:hover,
+    &:focus {
+      background-color: #f9b020;
+    }
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .box {
     display: flex;
+  }
+
+  .box.isMenu {
+    flex-direction: row;
   }
 }
