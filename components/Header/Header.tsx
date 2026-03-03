@@ -1,10 +1,35 @@
-import css from "./Header.module.css";
+"use client";
 
-export default async function Header() {
+import clsx from "clsx";
+import css from "./Header.module.css";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+export default function Header() {
+  const pathname = usePathname();
+  console.log(pathname);
+
   return (
     <header className={css.header}>
-      <div className="container">
-        <h2>Header</h2>
+      <div
+        className={clsx(
+          "container",
+          css.headerContainer,
+          pathname === "/" && css.homePage,
+        )}
+      >
+        <Link className={css.logo} href="/" aria-label="Logotype PetLove">
+          petl
+          <svg aria-hidden="true">
+            <use href="/sprite.svg#heart"></use>
+          </svg>
+          ve
+        </Link>
+        <button className={css.burgerMenu} type="button" aria-label="Menu">
+          <svg>
+            <use href="/sprite.svg#menu"></use>
+          </svg>
+        </button>
       </div>
     </header>
   );

@@ -40,7 +40,7 @@ export default function RootLayout({
 
           <main>{children}</main>
 
-          <Footer />
+          {/* <Footer /> */}
           <Toaster />
           <ReactQueryDevtools initialIsOpen={false} />
         </TanStackProvider>
