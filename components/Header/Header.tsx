@@ -5,6 +5,7 @@ import css from "./Header.module.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Nav from "../Nav/Nav";
+import AuthNav from "../AuthNav/AuthNav";
 
 export default function Header() {
   const pathname = usePathname();
@@ -29,11 +30,14 @@ export default function Header() {
 
         <Nav />
 
-        <button className={css.burgerMenu} type="button" aria-label="Menu">
-          <svg>
-            <use href="/sprite.svg#menu"></use>
-          </svg>
-        </button>
+        <div className={css.rightBox}>
+          <AuthNav />
+          <button className={css.burgerMenu} type="button" aria-label="Menu">
+            <svg>
+              <use href="/sprite.svg#menu"></use>
+            </svg>
+          </button>
+        </div>
       </div>
     </header>
   );

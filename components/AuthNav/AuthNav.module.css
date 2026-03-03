@@ -1,0 +1,61 @@
+.box {
+  display: none;
+  align-items: center;
+  gap: 8px;
+
+  &.homePage .link:not(.registerLink) {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 14px 34px;
+    color: #fff;
+
+    &:hover,
+    &:focus {
+      border-color: #fff4df;
+      background-color: #fff4df;
+      color: #f6b83d;
+    }
+  }
+}
+
+.link {
+  border-radius: 30px;
+  padding: 15px 35px;
+  background-color: #f6b83d;
+
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #fff;
+
+  transition: all 300ms ease;
+
+  &:hover,
+  &:focus {
+    background-color: #f9b020;
+  }
+
+  &:active {
+    background-color: #f6b83d;
+  }
+}
+
+.registerLink {
+  color: #f6b83d;
+  background-color: #fff4df;
+  padding: 15px 20px;
+
+  &:hover,
+  &:focus {
+    background-color: #fbe7c1;
+  }
+
+  &:active {
+    background-color: #fff4df;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .box {
+    display: flex;
+  }
+}

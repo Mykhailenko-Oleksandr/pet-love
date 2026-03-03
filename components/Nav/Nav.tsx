@@ -9,7 +9,7 @@ export default function Nav() {
   const pathname = usePathname();
 
   return (
-    <nav className={css.nav}>
+    <nav className={clsx(css.nav, pathname === "/" && css.homePage)}>
       <Link
         href="/news"
         className={clsx(css.link, pathname === "/news" && css.currentPage)}
