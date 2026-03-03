@@ -120,6 +120,7 @@ textarea:-webkit-autofill:focus {
 
 @media only screen and (min-width: 768px) {
   .container {
+    max-width: unset;
     width: 768px;
     padding: 0 32px;
   }

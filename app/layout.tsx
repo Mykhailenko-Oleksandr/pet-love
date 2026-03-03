@@ -7,7 +7,6 @@ import { Manrope } from "next/font/google";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
 import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -17,7 +16,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "",
+  title: "PetLove",
   description: "",
   openGraph: {
     title: "",
@@ -40,7 +39,6 @@ export default function RootLayout({
 
           <main>{children}</main>
 
-          {/* <Footer /> */}
           <Toaster />
           <ReactQueryDevtools initialIsOpen={false} />
         </TanStackProvider>

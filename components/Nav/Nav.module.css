@@ -1,0 +1,33 @@
+.nav {
+  display: none;
+}
+
+.link {
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
+  padding: 14px 19px;
+
+  letter-spacing: -0.03em;
+
+  transition: border-color 300ms ease;
+
+  &.currentPage {
+    border-color: #f6b83d;
+  }
+
+  &:hover,
+  &:focus {
+    border-color: #f6b83d;
+  }
+}
+
+/* @media only screen and (min-width: 768px) {
+} */
+
+@media only screen and (min-width: 1280px) {
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
