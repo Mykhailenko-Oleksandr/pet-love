@@ -57,6 +57,32 @@
     justify-content: center;
 
     width: 119px;
+
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.4);
+
+    &.currentPage {
+      border-color: #fff;
+    }
+
+    &:hover,
+    &:focus {
+      border-color: #fff;
+    }
+  }
+
+  &.homePage .link {
+    color: #262626;
+    border-color: rgba(38, 38, 38, 0.4);
+
+    &.currentPage {
+      border-color: #f6b83d;
+    }
+
+    &:hover,
+    &:focus {
+      border-color: #f6b83d;
+    }
   }
 }
 
