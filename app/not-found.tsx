@@ -2,13 +2,13 @@ import { Metadata } from "next";
 import NotFoundSection from "@/components/NotFoundSection/NotFoundSection";
 
 export const metadata: Metadata = {
-  title: "Not Found",
+  title: "404 - Not Found",
   description: "No such page exists",
   openGraph: {
-    title: "Not Found",
+    title: "404 - Not Found",
     description: "No such page exists",
     url: "https://",
-    images: [{ url: "" }],
+    images: [{ url: "/images/og.webp" }],
   },
 };
 

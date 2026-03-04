@@ -15,43 +15,44 @@ export default function Header() {
 
   return (
     <header className={css.header}>
-      <div
-        className={clsx(
-          "container",
-          css.headerContainer,
-          pathname === "/" && css.homePage,
-        )}
-      >
-        <Link className={css.logo} href="/" aria-label="Logotype PetLove">
-          petl
-          <svg aria-hidden="true">
-            <use href="/sprite.svg#heart"></use>
-          </svg>
-          ve
-        </Link>
-
-        <Nav />
-
-        <div className={css.rightBox}>
-          <AuthNav />
-
-          <button
-            className={css.burgerMenuBtn}
-            type="button"
-            aria-label="Menu"
-            onClick={() => setIsMenuOpen(true)}
-          >
-            <svg>
-              <use href="/sprite.svg#menu"></use>
+      <div className="container">
+        <div
+          className={clsx(
+            css.headerContainer,
+            pathname === "/" && css.homePage,
+          )}
+        >
+          <Link className={css.logo} href="/" aria-label="Logotype PetLove">
+            petl
+            <svg aria-hidden="true">
+              <use href="/sprite.svg#heart"></use>
             </svg>
-          </button>
-        </div>
+            ve
+          </Link>
 
-        <BurgerMenu
-          isOpen={isMenuOpen}
-          onClose={() => setIsMenuOpen(false)}
-          homePage={pathname === "/"}
-        />
+          <Nav />
+
+          <div className={css.rightBox}>
+            <AuthNav />
+
+            <button
+              className={css.burgerMenuBtn}
+              type="button"
+              aria-label="Menu"
+              onClick={() => setIsMenuOpen(true)}
+            >
+              <svg>
+                <use href="/sprite.svg#menu"></use>
+              </svg>
+            </button>
+          </div>
+
+          <BurgerMenu
+            isOpen={isMenuOpen}
+            onClose={() => setIsMenuOpen(false)}
+            homePage={pathname === "/"}
+          />
+        </div>
       </div>
     </header>
   );

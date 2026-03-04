@@ -14,6 +14,8 @@
 
   /* Стилі для Home Page*/
   &.homePage {
+    padding-left: 20px;
+    padding-right: 20px;
     border-radius: 30px 30px 0 0;
     background-color: #f6b83d;
 
@@ -84,6 +86,12 @@
   .headerContainer {
     padding-top: 16px;
     padding-bottom: 32px;
+
+    &.homePage {
+      border-radius: 60px 60px 0 0;
+      padding-left: 32px;
+      padding-right: 32px;
+    }
   }
 
   .logo {
@@ -102,6 +110,11 @@
 }
 
 @media only screen and (min-width: 1280px) {
+  .headerContainer.homePage {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+
   .burgerMenuBtn {
     display: none;
   }
