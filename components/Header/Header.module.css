@@ -10,7 +10,7 @@
   position: relative;
 
   padding-top: 18px;
-  padding-bottom: 20px;
+  padding-bottom: 16px;
 
   /* Стилі для Home Page*/
   &.homePage {
@@ -59,10 +59,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
-
-  width: 32px;
-  height: 32px;
+  padding: 4px 0;
 
   background-color: transparent;
 
@@ -98,14 +95,9 @@
     }
   }
 
-  .burgerMenuBtn {
+  .burgerMenuBtn svg {
     width: 36px;
     height: 36px;
-
-    & svg {
-      width: 36px;
-      height: 36px;
-    }
   }
 }
 

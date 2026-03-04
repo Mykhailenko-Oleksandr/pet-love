@@ -1,0 +1,144 @@
+.section {
+  display: flex;
+  flex-direction: column;
+
+  flex-grow: 1;
+  padding-bottom: 20px;
+}
+
+.containerNotFound {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  width: 100%;
+  flex-grow: 1;
+}
+
+.contentBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  width: 100%;
+  flex-grow: 1;
+  border-radius: 30px;
+  background-color: #f6b83d;
+}
+
+.statusBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  margin-bottom: 20px;
+}
+
+.statusNumber {
+  font-weight: 800;
+  font-size: 120px;
+  line-height: 100%;
+  color: #fff;
+}
+
+.statusZeroBox {
+  position: relative;
+
+  width: 109px;
+  height: 109px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+
+  overflow: hidden;
+}
+
+.imgCat {
+  max-width: unset;
+  width: 176px;
+  height: 178px;
+
+  position: absolute;
+  top: 0;
+  left: -33px;
+}
+
+.description {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #fff;
+
+  margin-bottom: 20px;
+}
+
+.link {
+  border-radius: 30px;
+  padding: 12px 30px;
+  min-width: 150px;
+  background-color: #fff4df;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  color: #f6b83d;
+
+  transition: background-color 300ms ease;
+
+  &:hover,
+  &:focus {
+    background-color: #fbe7c1;
+  }
+
+  &:active {
+    background-color: #fff4df;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .containerNotFound {
+    width: 768px;
+  }
+
+  .statusBox {
+    gap: unset;
+    margin-bottom: 40px;
+  }
+
+  .statusNumber {
+    font-size: 300px;
+  }
+
+  .statusZeroBox {
+    width: 280px;
+    height: 280px;
+  }
+
+  .imgCat {
+    width: 454px;
+    height: 455px;
+
+    top: -14px;
+    left: -85px;
+  }
+
+  .description {
+    font-size: 24px;
+    line-height: 117%;
+  }
+
+  .link {
+    padding: 14px 30px;
+    min-width: 162px;
+    font-size: 16px;
+    line-height: 125%;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .containerNotFound {
+    width: 1280px;
+  }
+}

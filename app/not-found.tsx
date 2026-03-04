@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import css from "./Home.module.css";
+import NotFoundSection from "@/components/NotFoundSection/NotFoundSection";
 
 export const metadata: Metadata = {
   title: "Not Found",
@@ -13,12 +13,5 @@ export const metadata: Metadata = {
 };
 
 export default function NotFound() {
-  return (
-    <div className={`container ${css.section}`}>
-      <h2 className={css.title}>404 - Page not found</h2>
-      <p className={css.description}>
-        Sorry, the page you are looking for does not exist.
-      </p>
-    </div>
-  );
+  return <NotFoundSection />;
 }
