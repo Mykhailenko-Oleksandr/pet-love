@@ -1,0 +1,184 @@
+.box {
+  position: relative;
+  width: 100%;
+  height: 280px;
+
+  border-radius: 30px;
+  background-color: #f6b83d;
+  overflow: hidden;
+}
+
+.figureIcon {
+  position: absolute;
+  top: 37px;
+  right: 2px;
+
+  fill: rgba(255, 255, 255, 0.1);
+  z-index: 5;
+}
+
+.figureIconDesc {
+  display: none;
+}
+
+.img {
+  position: absolute;
+  top: -25px;
+  left: -98px;
+
+  width: 506px;
+  height: 505px;
+  z-index: 10;
+
+  &.imgDog {
+    top: -29px;
+    left: -37px;
+
+    width: 451px;
+    height: 450px;
+  }
+}
+
+.petInfoBox {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .box {
+    display: flex;
+    align-items: flex-end;
+
+    border-radius: 60px;
+    padding: 32px;
+    height: 302px;
+  }
+
+  .img {
+    left: unset;
+    right: 16px;
+
+    &.imgDog {
+      left: unset;
+      right: 47px;
+    }
+  }
+
+  .figureIcon {
+    top: 53px;
+    right: 50px;
+
+    width: 530px;
+    height: 635px;
+  }
+
+  .petInfoBox {
+    position: relative;
+
+    display: flex;
+    gap: 8px;
+    max-width: 294px;
+
+    border-radius: 20px;
+    background-color: #fff;
+    padding: 16px 16px 18px 16px;
+
+    z-index: 20;
+  }
+
+  .iconPetBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #fff4df;
+  }
+
+  .infoBox {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 3px;
+  }
+
+  .topInfoBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .petName {
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: #f6b83d;
+  }
+
+  .petBirthdayBox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 12px;
+    line-height: 117%;
+    letter-spacing: -0.02em;
+  }
+
+  .petBirthday {
+    color: rgba(38, 38, 38, 0.5);
+  }
+
+  .petBirthdayData {
+    color: #262626;
+  }
+
+  .descriptionPet {
+    font-size: 12px;
+    line-height: 117%;
+    letter-spacing: -0.02em;
+    color: rgba(38, 38, 38, 0.8);
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .box {
+    padding: 0;
+    padding-left: 61px;
+    padding-bottom: 97px;
+
+    max-width: 592px;
+    min-height: 654px;
+  }
+
+  .img {
+    top: -14px;
+    right: -103px;
+
+    width: 833px;
+    height: 832px;
+
+    &.imgDog {
+      top: 3px;
+      right: -97px;
+
+      width: 787px;
+      height: 786px;
+    }
+  }
+
+  .figureIcon {
+    display: none;
+  }
+
+  .figureIconDesc {
+    display: block;
+    position: absolute;
+    top: 53px;
+    right: 28px;
+
+    fill: rgba(255, 255, 255, 0.1);
+    z-index: 5;
+  }
+}
