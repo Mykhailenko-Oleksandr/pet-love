@@ -1,0 +1,31 @@
+.registerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.formBox {
+  padding: 27px 20px;
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .registerContainer {
+    gap: 16px;
+  }
+
+  .formBox {
+    padding: 30px 140px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .registerContainer {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .formBox {
+    padding: 77px 84px;
+  }
+}

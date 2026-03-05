@@ -1,0 +1,26 @@
+.title {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 100%;
+  letter-spacing: -0.04em;
+
+  margin-bottom: 12px;
+}
+
+.description {
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+}
+
+@media only screen and (min-width: 768px) {
+  .title {
+    font-size: 54px;
+    margin-bottom: 16px;
+  }
+
+  .description {
+    font-size: 18px;
+    line-height: 122%;
+  }
+}
