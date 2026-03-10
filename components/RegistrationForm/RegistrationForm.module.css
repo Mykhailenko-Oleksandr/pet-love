@@ -1,0 +1,240 @@
+.inputBox {
+  position: relative;
+  margin-bottom: 10px;
+  transition: margin-bottom 300ms ease;
+
+  &.inputBoxWithMessage:not(:last-of-type) {
+    margin-bottom: 24px;
+  }
+
+  &:last-of-type {
+    margin-bottom: 24px;
+  }
+}
+
+.input {
+  outline: none;
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
+
+  padding: 11px;
+  width: 100%;
+
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+
+  transition: border-color 300ms ease;
+
+  &::placeholder {
+    color: rgba(38, 38, 38, 0.5);
+  }
+
+  &.inputError {
+    padding-right: 41px;
+    border-color: #ef2447;
+
+    &.passwordInput {
+      padding-right: 68px;
+    }
+  }
+
+  &.inputSuccess {
+    padding-right: 41px;
+    border-color: #08aa83;
+
+    &.passwordInput {
+      padding-right: 67px;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    border-color: #f6b83d;
+  }
+}
+
+.inputMessage {
+  position: absolute;
+  bottom: -14px;
+  left: 12px;
+
+  font-size: 10px;
+  line-height: 120%;
+  letter-spacing: -0.03em;
+
+  &.error {
+    color: #ef2447;
+  }
+
+  &.success {
+    color: #08aa83;
+  }
+}
+
+.inputIcon {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+
+  transform: translateY(-50%);
+
+  &.errorIcon {
+    stroke: #ef2447;
+  }
+
+  &.successIcon {
+    fill: none;
+    stroke: #08aa83;
+  }
+
+  &.inPassword {
+    right: 38px;
+  }
+}
+
+.eyeBtn {
+  padding: 0;
+  background-color: transparent;
+
+  position: absolute;
+  top: 50%;
+  right: 12px;
+
+  transform: translateY(-50%);
+
+  width: 18px;
+  height: 18px;
+
+  & svg {
+    fill: none;
+    stroke: #f6b83d;
+  }
+}
+
+.submitBtn {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #fff;
+
+  width: 100%;
+  border-radius: 30px;
+  padding: 12px;
+  background-color: #f6b83d;
+
+  margin-bottom: 12px;
+
+  transition: background-color 300ms ease;
+
+  &:hover,
+  &:focus {
+    background-color: #f9b020;
+  }
+
+  &:active {
+    background-color: #f6b83d;
+  }
+}
+
+.bottomTextBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 14px;
+  line-height: 143%;
+  letter-spacing: -0.03em;
+}
+
+.bottomText {
+  color: rgba(38, 38, 38, 0.5);
+}
+
+.bottomLink {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #f6b83d;
+}
+
+@media only screen and (min-width: 768px) {
+  .inputBox {
+    margin-bottom: 16px;
+
+    &.inputBoxWithMessage:not(:last-of-type) {
+      margin-bottom: 30px;
+    }
+
+    &:last-of-type {
+      margin-bottom: 32px;
+    }
+  }
+
+  .input {
+    padding: 15px;
+
+    font-size: 16px;
+    line-height: 125%;
+
+    &.inputError,
+    &.inputSuccess {
+      padding-right: 53px;
+
+      &.passwordInput {
+        padding-right: 87px;
+      }
+    }
+  }
+
+  .inputMessage {
+    bottom: -18px;
+    left: 16px;
+
+    font-size: 12px;
+    line-height: 117%;
+  }
+
+  .inputIcon {
+    right: 16px;
+
+    &.inPassword {
+      right: 50px;
+    }
+
+    &.errorIcon,
+    &.successIcon {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  .eyeBtn {
+    right: 16px;
+
+    width: 22px;
+    height: 22px;
+
+    & svg {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  .submitBtn {
+    font-size: 16px;
+    line-height: 125%;
+    padding: 18px;
+    margin-bottom: 16px;
+  }
+
+  .bottomTextBox {
+    font-size: 14px;
+    line-height: 143%;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+}

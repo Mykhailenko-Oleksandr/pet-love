@@ -5,6 +5,10 @@
 }
 
 .formBox {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
   padding: 27px 20px;
   width: 100%;
 }
@@ -15,6 +19,7 @@
   }
 
   .formBox {
+    gap: 32px;
     padding: 30px 140px;
   }
 }
@@ -23,6 +28,8 @@
   .registerContainer {
     flex-direction: row;
     gap: 32px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
 
   .formBox {
