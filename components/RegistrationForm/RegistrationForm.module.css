@@ -137,6 +137,11 @@
   &:active {
     background-color: #f6b83d;
   }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: #ccc;
+  }
 }
 
 .bottomTextBox {
@@ -234,7 +239,4 @@
     font-size: 14px;
     line-height: 143%;
   }
-}
-
-@media only screen and (min-width: 1280px) {
 }

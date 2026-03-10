@@ -289,7 +289,7 @@ export default function RegistrationForm() {
         </div>
       </fieldset>
 
-      <button className={css.submitBtn} type="submit">
+      <button className={css.submitBtn} type="submit" disabled={!isValid}>
         Registration
       </button>
 
