@@ -1,0 +1,52 @@
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.formBox {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  padding: 60px 20px;
+  width: 100%;
+
+  transition: padding 300ms ease;
+
+  &.oneDirtyInput {
+    padding: 55px 20px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .loginContainer {
+    gap: 16px;
+  }
+
+  .formBox {
+    gap: 32px;
+    padding: 71px 140px;
+
+    &.oneDirtyInput {
+      padding: 64px 140px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .loginContainer {
+    flex-direction: row;
+    gap: 32px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .formBox {
+    padding: 118px 84px;
+
+    &.oneDirtyInput {
+      padding: 111px 84px;
+    }
+  }
+}

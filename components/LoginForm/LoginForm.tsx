@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import clsx from "clsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 interface FormData {
@@ -29,15 +29,26 @@ const schema = yup
   })
   .required();
 
-export default function LoginForm() {
+interface LoginFormProps {
+  changeDirtyInputs: (count: number) => void;
+}
+
+export default function LoginForm({ changeDirtyInputs }: LoginFormProps) {
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const {
     register,
     handleSubmit,
     formState: { errors, isValid, dirtyFields },
   } = useForm<FormData>({ mode: "onChange", resolver: yupResolver(schema) });
+
+  useEffect(() => {
+    const count = Object.keys(dirtyFields).filter(
+      (field) => field !== "password",
+    ).length;
+
+    changeDirtyInputs(count);
+  }, [dirtyFields, changeDirtyInputs]);
 
   const onSubmit: SubmitHandler<FormData> = (data) => console.log(data);
 
