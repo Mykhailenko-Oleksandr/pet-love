@@ -11,6 +11,20 @@
 
   padding: 27px 20px;
   width: 100%;
+
+  transition: padding 300ms ease;
+
+  &.oneDirtyInput {
+    padding: 20px 20px;
+  }
+
+  &.twoDirtyInput {
+    padding: 13px 20px;
+  }
+
+  &.threeDirtyInput {
+    padding: 6px 20px;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -21,6 +35,18 @@
   .formBox {
     gap: 32px;
     padding: 30px 140px;
+
+    &.oneDirtyInput {
+      padding: 23px 140px;
+    }
+
+    &.twoDirtyInput {
+      padding: 16px 140px;
+    }
+
+    &.threeDirtyInput {
+      padding: 9px 140px;
+    }
   }
 }
 
@@ -34,5 +60,17 @@
 
   .formBox {
     padding: 77px 84px;
+
+    &.oneDirtyInput {
+      padding: 70px 84px;
+    }
+
+    &.twoDirtyInput {
+      padding: 63px 84px;
+    }
+
+    &.threeDirtyInput {
+      padding: 56px 84px;
+    }
   }
 }

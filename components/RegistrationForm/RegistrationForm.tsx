@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import clsx from "clsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 interface FormData {
@@ -36,7 +36,13 @@ const schema = yup
   })
   .required();
 
-export default function RegistrationForm() {
+interface RegistrationFormProps {
+  changeDirtyInputs: (count: number) => void;
+}
+
+export default function RegistrationForm({
+  changeDirtyInputs,
+}: RegistrationFormProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -44,7 +50,18 @@ export default function RegistrationForm() {
     register,
     handleSubmit,
     formState: { errors, isValid, dirtyFields },
-  } = useForm<FormData>({ mode: "onChange", resolver: yupResolver(schema) });
+  } = useForm<FormData>({
+    mode: "onChange",
+    resolver: yupResolver(schema),
+  });
+
+  const dirtyCount = Object.keys(dirtyFields).filter(
+    (field) => field !== "confirmPassword",
+  ).length;
+
+  useEffect(() => {
+    changeDirtyInputs(dirtyCount);
+  }, [dirtyCount, changeDirtyInputs]);
 
   const onSubmit: SubmitHandler<FormData> = (data) => console.log(data);
 

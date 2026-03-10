@@ -42,13 +42,13 @@ export default function LoginForm({ changeDirtyInputs }: LoginFormProps) {
     formState: { errors, isValid, dirtyFields },
   } = useForm<FormData>({ mode: "onChange", resolver: yupResolver(schema) });
 
-  useEffect(() => {
-    const count = Object.keys(dirtyFields).filter(
-      (field) => field !== "password",
-    ).length;
+  const dirtyCount = Object.keys(dirtyFields).filter(
+    (field) => field !== "password",
+  ).length;
 
-    changeDirtyInputs(count);
-  }, [dirtyFields, changeDirtyInputs]);
+  useEffect(() => {
+    changeDirtyInputs(dirtyCount);
+  }, [dirtyCount, changeDirtyInputs]);
 
   const onSubmit: SubmitHandler<FormData> = (data) => console.log(data);
 
