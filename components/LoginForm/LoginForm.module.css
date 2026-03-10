@@ -4,11 +4,11 @@
   transition: margin-bottom 300ms ease;
 
   &.inputBoxWithMessage:not(:last-of-type) {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
 
   &:last-of-type {
-    margin-bottom: 24px;
+    margin-bottom: 40px;
   }
 }
 
@@ -174,7 +174,7 @@
     }
 
     &:last-of-type {
-      margin-bottom: 32px;
+      margin-bottom: 64px;
     }
   }
 
