@@ -7,6 +7,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { registerUser } from "@/lib/api/clientApi";
+import { ApiError } from "@/app/api/api";
+import toast from "react-hot-toast";
+import { useAuthStore } from "@/lib/store/authStore";
+import { useRouter } from "next/navigation";
 
 interface FormData {
   name: string;
@@ -45,6 +50,8 @@ export default function RegistrationForm({
 }: RegistrationFormProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const setUser = useAuthStore((state) => state.setUser);
+  const router = useRouter();
 
   const {
     register,
@@ -63,7 +70,25 @@ export default function RegistrationForm({
     changeDirtyInputs(dirtyCount);
   }, [dirtyCount, changeDirtyInputs]);
 
-  const onSubmit: SubmitHandler<FormData> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
+    try {
+      const user = await registerUser({
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      });
+      setUser(user);
+      // router.replace("/profile");
+    } catch (error: unknown) {
+      const err = error as ApiError;
+
+      toast.error(
+        err.response?.data?.response?.validation?.body?.message ||
+          err.response?.data?.response?.message ||
+          err.message,
+      );
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

@@ -1,31 +1,27 @@
-import { NextResponse } from "next/server";
-import { cookies } from "next/headers";
+import { NextRequest, NextResponse } from "next/server";
 import { isAxiosError } from "axios";
-import { api } from "../api";
-import { logErrorResponse } from "../_utils/utils";
+import { api } from "../../api";
+import { logErrorResponse } from "../../_utils/utils";
 
-export async function GET() {
+export async function POST(req: NextRequest) {
   try {
-    const cookieStore = await cookies();
+    const body = await req.json();
 
-    const res = await api.get("/sample", {
-      headers: {
-        Cookie: cookieStore.toString(),
-      },
-    });
+    const res = await api.post("/users/signup", body);
+
     return NextResponse.json(res.data, { status: res.status });
   } catch (error) {
     if (isAxiosError(error)) {
       logErrorResponse(error.response?.data);
       return NextResponse.json(
         { error: error.message, response: error.response?.data },
-        { status: error.status }
+        { status: error.status },
       );
     }
     logErrorResponse({ message: (error as Error).message });
     return NextResponse.json(
       { error: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

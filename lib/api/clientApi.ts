@@ -1,6 +1,13 @@
+import { User } from "@/types/user";
 import { nextServer } from "./api";
 
-// export async function sample(id: string) {
-//   const res = await nextServer.get<{a: string}>(`/sample/${id}`);
-//   return res.data;
-// }
+interface RegisterRequest {
+  name: string;
+  email: string;
+  password: string;
+}
+
+export async function registerUser(body: RegisterRequest) {
+  const res = await nextServer.post<User>("/users/signup", body);
+  return res.data;
+}
