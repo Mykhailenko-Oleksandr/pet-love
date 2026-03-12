@@ -2,6 +2,11 @@
   display: flex;
   align-items: center;
   gap: 8px;
+
+  &:hover .avatarBox,
+  &:focus .avatarBox {
+    background-color: #fbe7c1;
+  }
 }
 
 .avatarBox {
@@ -16,6 +21,8 @@
   border-radius: 50%;
 
   background-color: #fff4df;
+  transition: background-color 300ms ease;
+
   & svg {
     fill: #f6b83d;
   }

@@ -13,6 +13,8 @@ import UserNav from "../UserNav/UserNav";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isModalLogout, setIsModalLogout] = useState(false);
+
   const pathname = usePathname();
   const { isAuthenticated, user } = useAuthStore();
 
@@ -36,7 +38,11 @@ export default function Header() {
           <Nav />
 
           <div className={css.rightBox}>
-            {isAuthenticated && user ? <UserNav user={user} /> : <AuthNav />}
+            {isAuthenticated && user ? (
+              <UserNav user={user} openModal={() => setIsModalLogout(true)} />
+            ) : (
+              <AuthNav />
+            )}
 
             <button
               className={css.burgerMenuBtn}
