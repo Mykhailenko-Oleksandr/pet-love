@@ -78,7 +78,7 @@ export default function RegistrationForm({
         password: data.password,
       });
       setUser(user);
-      // router.replace("/profile");
+      router.replace("/profile");
     } catch (error: unknown) {
       const err = error as ApiError;
 

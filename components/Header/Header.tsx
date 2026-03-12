@@ -8,10 +8,13 @@ import Nav from "../Nav/Nav";
 import AuthNav from "../AuthNav/AuthNav";
 import { useState } from "react";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
+import { useAuthStore } from "@/lib/store/authStore";
+import UserNav from "../UserNav/UserNav";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { isAuthenticated, user } = useAuthStore();
 
   return (
     <header className={css.header}>
@@ -33,7 +36,7 @@ export default function Header() {
           <Nav />
 
           <div className={css.rightBox}>
-            <AuthNav />
+            {isAuthenticated && user ? <UserNav user={user} /> : <AuthNav />}
 
             <button
               className={css.burgerMenuBtn}

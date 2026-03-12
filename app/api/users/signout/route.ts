@@ -1,23 +1,26 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { isAxiosError } from "axios";
 import { api } from "../../api";
 import { logErrorResponse } from "../../_utils/utils";
+import { cookies } from "next/headers";
 
-export async function POST(req: NextRequest) {
+export async function POST() {
   try {
-    const body = await req.json();
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get("accessToken")?.value;
 
-    const res = await api.post("/users/signup", body);
-    const { token, ...data } = res.data;
+    const res = await api.post(
+      "/users/signout",
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      },
+    );
 
-    const response = NextResponse.json(data, { status: res.status });
-
-    response.cookies.set("accessToken", token, {
-      httpOnly: true,
-      sameSite: "lax",
-      path: "/",
-      maxAge: 60 * 60 * 24 * 7,
-    });
+    const response = NextResponse.json(res.data, { status: res.status });
+    response.cookies.delete("accessToken");
 
     return response;
   } catch (error) {

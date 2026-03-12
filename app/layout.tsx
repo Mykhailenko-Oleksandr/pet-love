@@ -7,6 +7,7 @@ import { Manrope } from "next/font/google";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
 import Header from "@/components/Header/Header";
+import AuthProvider from "@/components/AuthProvider/AuthProvider";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -35,12 +36,14 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${manrope.variable}`}>
         <TanStackProvider>
-          <Header />
+          <AuthProvider>
+            <Header />
 
-          <main>{children}</main>
+            <main>{children}</main>
 
-          <Toaster />
-          <ReactQueryDevtools initialIsOpen={false} />
+            <Toaster />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </AuthProvider>
         </TanStackProvider>
       </body>
     </html>

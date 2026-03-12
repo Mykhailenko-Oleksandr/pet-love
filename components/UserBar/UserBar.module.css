@@ -1,0 +1,59 @@
+.link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatarBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+
+  background-color: #fff4df;
+  & svg {
+    fill: #f6b83d;
+  }
+}
+
+.userName {
+  display: none;
+
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: -0.03em;
+
+  &.homePage {
+    color: #fff;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .avatarBox {
+    width: 50px;
+    height: 50px;
+
+    & svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    & img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  .userName {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+}

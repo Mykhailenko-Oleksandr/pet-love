@@ -1,6 +1,10 @@
+import { Notice } from "./notice";
+
 export interface User {
   _id: string;
   name: string;
   email: string;
-  token: string;
+  avatar?: string;
+  phone?: string;
+  noticesFavorites: Notice[];
 }

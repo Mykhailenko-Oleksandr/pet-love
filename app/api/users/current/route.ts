@@ -1,13 +1,20 @@
-import { NextRequest, NextResponse } from "next/server";
-import { isAxiosError } from "axios";
+import { NextResponse } from "next/server";
 import { api } from "../../api";
+import { cookies } from "next/headers";
+import { isAxiosError } from "axios";
 import { logErrorResponse } from "../../_utils/utils";
 
-export async function POST(req: NextRequest) {
+export async function GET() {
   try {
-    const body = await req.json();
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get("accessToken")?.value;
 
-    const res = await api.post("/users/signup", body);
+    const res = await api.get("/users/current", {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
     const { token, ...data } = res.data;
 
     const response = NextResponse.json(data, { status: res.status });
