@@ -1,10 +1,11 @@
 import Image from "next/image";
 import css from "./HeroSection.module.css";
+import clsx from "clsx";
 
 export default function HeroSection() {
   return (
     <section className={css.section}>
-      <div className="container">
+      <div className={clsx("container", css.container)}>
         <div className={css.contentBox}>
           <h1 className={css.title}>
             Take good <span>care</span> of your small pets

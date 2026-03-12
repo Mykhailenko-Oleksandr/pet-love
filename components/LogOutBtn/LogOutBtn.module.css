@@ -14,6 +14,43 @@
 
   transition: background-color 300ms ease;
 
+  &.homePage {
+    display: none;
+  }
+
+  &.inMenu {
+    display: block;
+    background-color: #fff4df;
+    color: #f6b83d;
+    font-size: 14px;
+    line-height: 129%;
+    padding: 12px;
+    width: 100%;
+
+    &:hover,
+    &:focus {
+      background-color: #fbe7c1;
+    }
+
+    &:active {
+      background-color: #fff4df;
+    }
+
+    &.homePage {
+      background-color: #f6b83d;
+      color: #fff;
+
+      &:hover,
+      &:focus {
+        background-color: #f9b020;
+      }
+
+      &:active {
+        background-color: #f6b83d;
+      }
+    }
+  }
+
   &:hover,
   &:focus {
     background-color: #f9b020;
@@ -27,6 +64,12 @@
 @media only screen and (min-width: 768px) {
   .btn {
     display: block;
+
+    &.inMenu {
+      font-size: 16px;
+      line-height: 125%;
+      padding: 15px;
+    }
   }
 }
 

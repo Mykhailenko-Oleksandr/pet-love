@@ -20,7 +20,13 @@ export default function Header() {
 
   return (
     <header className={css.header}>
-      <div className="container">
+      <div
+        className={clsx(
+          "container",
+          css.container,
+          pathname === "/" && css.homePage,
+        )}
+      >
         <div
           className={clsx(
             css.headerContainer,
@@ -60,6 +66,8 @@ export default function Header() {
             isOpen={isMenuOpen}
             onClose={() => setIsMenuOpen(false)}
             homePage={pathname === "/"}
+            isAuthenticated={isAuthenticated}
+            openModal={() => setIsModalLogout(true)}
           />
         </div>
       </div>

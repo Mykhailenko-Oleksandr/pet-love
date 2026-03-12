@@ -110,6 +110,11 @@
 }
 
 @media only screen and (min-width: 1280px) {
+  .container.homePage {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
   .headerContainer.homePage {
     padding-left: 64px;
     padding-right: 64px;

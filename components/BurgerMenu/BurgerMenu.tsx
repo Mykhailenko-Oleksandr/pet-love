@@ -5,17 +5,22 @@ import css from "./BurgerMenu.module.css";
 import { MouseEvent, useEffect } from "react";
 import AuthNav from "../AuthNav/AuthNav";
 import Nav from "../Nav/Nav";
+import LogOutBtn from "../LogOutBtn/LogOutBtn";
 
 interface BurgerMenuProps {
   isOpen: boolean;
   onClose: () => void;
   homePage?: boolean;
+  isAuthenticated: boolean;
+  openModal: () => void;
 }
 
 export default function BurgerMenu({
   isOpen,
   onClose,
   homePage,
+  isAuthenticated,
+  openModal,
 }: BurgerMenuProps) {
   function handleClickBackdrop(e: MouseEvent<HTMLDivElement>) {
     if (e.target === e.currentTarget) {
@@ -71,7 +76,11 @@ export default function BurgerMenu({
 
         <Nav isMenu onCloseMenu={onClose} />
 
-        <AuthNav isMenu onCloseMenu={onClose} />
+        {!isAuthenticated ? (
+          <AuthNav isMenu onCloseMenu={onClose} />
+        ) : (
+          <LogOutBtn openModal={openModal} inMenu />
+        )}
       </div>
     </div>
   );
