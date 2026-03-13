@@ -1,7 +1,7 @@
 "use client";
 
 import css from "./SearchField.module.css";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useState } from "react";
 
 interface SearchFieldProps {
   search: (value: string) => void;
@@ -14,6 +14,10 @@ export default function SearchField({ search }: SearchFieldProps) {
     setSearchWord(event.target.value);
   }
 
+  function handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
+    if (event.key === "Enter") search(searchWord);
+  }
+
   return (
     <div className={css.box}>
       <input
@@ -21,6 +25,7 @@ export default function SearchField({ search }: SearchFieldProps) {
         placeholder="Search"
         value={searchWord}
         onChange={handleChange}
+        onKeyDown={handleKeyDown}
         className={css.input}
       ></input>
       <div className={css.btnsBox}>

@@ -20,6 +20,7 @@ interface LoginRequest {
   password: string;
 }
 
+// Auth
 export async function registerUser(body: RegisterRequest) {
   const res = await nextServer.post<User>("/users/signup", body);
   return res.data;
@@ -37,5 +38,18 @@ export async function logoutUser() {
 
 export async function currentUser() {
   const res = await nextServer.get("/users/current");
+  return res.data;
+}
+
+// News
+export async function getNews(keyword: string, page: number, limit?: number) {
+  const res = await nextServer.get<NewsResponse>("/news", {
+    params: {
+      keyword,
+      page,
+      limit,
+    },
+  });
+
   return res.data;
 }

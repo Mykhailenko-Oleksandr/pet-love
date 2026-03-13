@@ -6,10 +6,17 @@ import {
 import NewsClient from "./News.client";
 import { getNews } from "@/lib/api/serverApi";
 
+const searchWord = "";
+const page = 1;
+
 export default async function News() {
   const queryClient = new QueryClient();
-  const news = await getNews(" pavilion ", 1);
-  console.log("news", news);
+
+  await queryClient.prefetchQuery({
+    queryKey: ["news", searchWord, page],
+    queryFn: () => getNews(searchWord, page),
+  });
+
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <NewsClient />

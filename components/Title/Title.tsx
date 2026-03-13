@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import css from "./Title.module.css";
 
 interface TitleProps {
@@ -8,7 +9,9 @@ interface TitleProps {
 export default function Title({ title, description }: TitleProps) {
   return (
     <div>
-      <h2 className={css.title}>{title}</h2>
+      <h2 className={clsx(css.title, !description && css.noDescription)}>
+        {title}
+      </h2>
       {description && <p className={css.description}>{description}</p>}
     </div>
   );
