@@ -1,0 +1,70 @@
+.box {
+  position: relative;
+}
+
+.input {
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
+  padding: 12px 59px 12px 12px;
+  width: 100%;
+  outline: none;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+
+  transition: border-color 300ms ease;
+
+  &::placeholder {
+    color: rgba(38, 38, 38, 0.5);
+  }
+
+  &:hover,
+  &:focus {
+    border-color: #f6b83d;
+  }
+}
+
+.btnsBox {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-color: transparent;
+
+  & svg {
+    fill: none;
+    stroke: #262626;
+    transition: transform 300ms ease;
+  }
+
+  &.clearBtn {
+  }
+
+  &:hover svg,
+  &:focus svg {
+    transform: scale(1.1);
+  }
+
+  &:active svg {
+    transform: scale(1);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+}
+
+@media only screen and (min-width: 1280px) {
+}
