@@ -7,8 +7,18 @@ interface RegisterRequest {
   password: string;
 }
 
+interface LoginRequest {
+  email: string;
+  password: string;
+}
+
 export async function registerUser(body: RegisterRequest) {
   const res = await nextServer.post<User>("/users/signup", body);
+  return res.data;
+}
+
+export async function loginUser(body: LoginRequest) {
+  const res = await nextServer.post<User>("/users/signin", body);
   return res.data;
 }
 

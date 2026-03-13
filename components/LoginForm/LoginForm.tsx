@@ -7,6 +7,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { loginUser } from "@/lib/api/clientApi";
+import { useRouter } from "next/navigation";
+import { useAuthStore } from "@/lib/store/authStore";
+import { ApiError } from "@/app/api/api";
+import toast from "react-hot-toast";
 
 interface FormData {
   email: string;
@@ -35,6 +40,8 @@ interface LoginFormProps {
 
 export default function LoginForm({ changeDirtyInputs }: LoginFormProps) {
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
+  const setUser = useAuthStore((state) => state.setUser);
 
   const {
     register,
@@ -50,7 +57,20 @@ export default function LoginForm({ changeDirtyInputs }: LoginFormProps) {
     changeDirtyInputs(dirtyCount);
   }, [dirtyCount, changeDirtyInputs]);
 
-  const onSubmit: SubmitHandler<FormData> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
+    try {
+      const user = await loginUser(data);
+      setUser(user);
+      router.replace("/profile");
+    } catch (error: unknown) {
+      const err = error as ApiError;
+      toast.error(
+        err.response?.data?.response?.validation?.body?.message ||
+          err.response?.data?.response?.message ||
+          err.message,
+      );
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

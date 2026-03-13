@@ -11,16 +11,31 @@ import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import { useAuthStore } from "@/lib/store/authStore";
 import UserNav from "../UserNav/UserNav";
 import ModalApproveAction from "../ModalApproveAction/ModalApproveAction";
+import { logoutUser } from "@/lib/api/clientApi";
+import toast from "react-hot-toast";
+import { ApiError } from "@/app/api/api";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalLogout, setIsModalLogout] = useState(false);
 
   const pathname = usePathname();
-  const { isAuthenticated, user } = useAuthStore();
+  const { isAuthenticated, user, clearIsAuthenticated } = useAuthStore();
 
-  function handleLogout() {
-    console.log("ok");
+  async function handleLogout() {
+    try {
+      await logoutUser();
+    } catch (error: unknown) {
+      const err = error as ApiError;
+      toast.error(
+        err.response?.data?.response?.validation?.body?.message ||
+          err.response?.data?.response?.message ||
+          err.message,
+      );
+    } finally {
+      clearIsAuthenticated();
+      setIsModalLogout(false);
+    }
   }
 
   return (
