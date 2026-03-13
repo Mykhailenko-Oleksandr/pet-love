@@ -1,0 +1,82 @@
+.imgBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #fff4df;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: -0.03em;
+
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.btnsBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.btn {
+  border-radius: 30px;
+  padding: 12px;
+  width: 100%;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+
+  transition: background-color 300ms ease;
+
+  &.btnYes {
+    background-color: #f6b83d;
+    color: #fff;
+
+    &:hover,
+    &:focus {
+      background-color: #f9b020;
+    }
+
+    &:active {
+      background-color: #f6b83d;
+    }
+  }
+
+  &.btnCancel {
+    background-color: rgba(38, 38, 38, 0.05);
+
+    &:hover,
+    &:focus {
+      background-color: rgba(38, 38, 38, 0.1);
+    }
+
+    &:active {
+      background-color: rgba(38, 38, 38, 0.05);
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .title {
+    font-size: 24px;
+    line-height: 117%;
+  }
+
+  .btn {
+    padding: 14px;
+    font-size: 16px;
+    line-height: 125%;
+  }
+}

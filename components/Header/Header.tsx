@@ -10,6 +10,7 @@ import { useState } from "react";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import { useAuthStore } from "@/lib/store/authStore";
 import UserNav from "../UserNav/UserNav";
+import ModalApproveAction from "../ModalApproveAction/ModalApproveAction";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,59 +19,72 @@ export default function Header() {
   const pathname = usePathname();
   const { isAuthenticated, user } = useAuthStore();
 
+  function handleLogout() {
+    console.log("ok");
+  }
+
   return (
-    <header className={css.header}>
-      <div
-        className={clsx(
-          "container",
-          css.container,
-          pathname === "/" && css.homePage,
-        )}
-      >
+    <>
+      <header className={css.header}>
         <div
           className={clsx(
-            css.headerContainer,
+            "container",
+            css.container,
             pathname === "/" && css.homePage,
           )}
         >
-          <Link className={css.logo} href="/" aria-label="Logotype PetLove">
-            petl
-            <svg aria-hidden="true">
-              <use href="/sprite.svg#heart"></use>
-            </svg>
-            ve
-          </Link>
-
-          <Nav />
-
-          <div className={css.rightBox}>
-            {isAuthenticated && user ? (
-              <UserNav user={user} openModal={() => setIsModalLogout(true)} />
-            ) : (
-              <AuthNav />
+          <div
+            className={clsx(
+              css.headerContainer,
+              pathname === "/" && css.homePage,
             )}
-
-            <button
-              className={css.burgerMenuBtn}
-              type="button"
-              aria-label="Menu"
-              onClick={() => setIsMenuOpen(true)}
-            >
-              <svg>
-                <use href="/sprite.svg#menu"></use>
+          >
+            <Link className={css.logo} href="/" aria-label="Logotype PetLove">
+              petl
+              <svg aria-hidden="true">
+                <use href="/sprite.svg#heart"></use>
               </svg>
-            </button>
-          </div>
+              ve
+            </Link>
 
-          <BurgerMenu
-            isOpen={isMenuOpen}
-            onClose={() => setIsMenuOpen(false)}
-            homePage={pathname === "/"}
-            isAuthenticated={isAuthenticated}
-            openModal={() => setIsModalLogout(true)}
-          />
+            <Nav />
+
+            <div className={css.rightBox}>
+              {isAuthenticated && user ? (
+                <UserNav user={user} openModal={() => setIsModalLogout(true)} />
+              ) : (
+                <AuthNav />
+              )}
+
+              <button
+                className={css.burgerMenuBtn}
+                type="button"
+                aria-label="Menu"
+                onClick={() => setIsMenuOpen(true)}
+              >
+                <svg>
+                  <use href="/sprite.svg#menu"></use>
+                </svg>
+              </button>
+            </div>
+
+            <BurgerMenu
+              isOpen={isMenuOpen}
+              onClose={() => setIsMenuOpen(false)}
+              homePage={pathname === "/"}
+              isAuthenticated={isAuthenticated}
+              openModal={() => setIsModalLogout(true)}
+            />
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+
+      {isModalLogout && (
+        <ModalApproveAction
+          onClose={() => setIsModalLogout(false)}
+          confirm={handleLogout}
+        />
+      )}
+    </>
   );
 }

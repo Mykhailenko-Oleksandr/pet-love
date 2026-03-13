@@ -16,11 +16,14 @@ export default function AuthProvider({ children }: Props) {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const user = await currentUser();
-
-      if (user) {
-        if (user) setUser(user);
-      } else {
+      try {
+        const user = await currentUser();
+        if (user) {
+          if (user) setUser(user);
+        } else {
+          clearIsAuthenticated();
+        }
+      } catch {
         clearIsAuthenticated();
       }
     };
