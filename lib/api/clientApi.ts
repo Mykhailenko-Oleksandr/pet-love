@@ -1,5 +1,13 @@
 import { User } from "@/types/user";
 import { nextServer } from "./api";
+import { News } from "@/types/news";
+
+export interface NewsResponse {
+  page: number;
+  perPage: number;
+  totalPages: number;
+  results: News[];
+}
 
 interface RegisterRequest {
   name: string;

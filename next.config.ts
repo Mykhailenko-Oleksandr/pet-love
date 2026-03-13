@@ -1,9 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // images: {
-  //   remotePatterns: [{ protocol: "https", hostname: "ac.goit.global" }],
-  // },
+  images: {
+    remotePatterns: [{ protocol: "https", hostname: "www.nytimes.com" }],
+  },
 };
 
 export default nextConfig;
