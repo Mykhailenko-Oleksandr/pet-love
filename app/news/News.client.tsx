@@ -7,6 +7,7 @@ import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { getNews } from "@/lib/api/clientApi";
 import { useState } from "react";
 import NewsList from "@/components/NewsList/NewsList";
+import Pagination from "@/components/Pagination/Pagination";
 
 export default function NewsClient() {
   const [searchWord, setSearchWord] = useState("");
@@ -29,6 +30,14 @@ export default function NewsClient() {
           <SearchField search={(word) => setSearchWord(word)} />
         </div>
         {data && data.results.length > 0 && <NewsList news={data.results} />}
+
+        {isSuccess && totalPages > 1 && (
+          <Pagination
+            totalPages={totalPages}
+            page={page}
+            updatePage={setPage}
+          />
+        )}
       </div>
     </section>
   );

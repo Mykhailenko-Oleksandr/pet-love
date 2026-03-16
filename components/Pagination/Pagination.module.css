@@ -1,0 +1,138 @@
+.paginationWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.prevNextBtnsBox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.prevNextBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: 1px solid rgba(38, 38, 38, 0.05);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  transition: border-color 300ms ease;
+
+  & svg {
+    fill: #262626;
+  }
+
+  &:hover {
+    border-color: rgba(38, 38, 38, 0.2);
+  }
+
+  &:disabled {
+    border-color: rgba(38, 38, 38, 0.05);
+
+    & svg {
+      fill: rgba(38, 38, 38, 0.5);
+    }
+  }
+}
+
+.iconFirstLastBtnOne {
+  position: absolute;
+  top: 50%;
+  left: 13px;
+  transform: translateY(-50%);
+  fill: #262626;
+}
+
+.iconFirstLastBtnTwo {
+  position: absolute;
+  top: 50%;
+  left: 6px;
+  transform: translateY(-50%);
+  fill: #262626;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+}
+
+.link,
+.break {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(38, 38, 38, 0.05);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+
+  font-weight: 700;
+  font-size: 14px;
+  color: #262626;
+
+  transition: border-color 300ms ease;
+
+  &:hover {
+    border-color: rgba(38, 38, 38, 0.2);
+  }
+}
+
+.active {
+  background-color: #f6b83d;
+  border: none;
+  color: #fff;
+
+  transition: background-color 300ms ease;
+
+  &:hover {
+    background-color: #f9b020;
+  }
+}
+
+.previous,
+.next,
+.notFirstPage {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .paginationWrapper {
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .prevNextBtnsBox {
+    gap: 8px;
+  }
+
+  .prevNextBtn {
+    width: 44px;
+    height: 44px;
+
+    & svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .link,
+  .break {
+    width: 44px;
+    height: 44px;
+
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  .notFirstPage {
+    display: flex;
+  }
+}
