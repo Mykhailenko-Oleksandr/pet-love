@@ -23,10 +23,12 @@ export default function RegisterPageSection() {
             countDirtyInputs === 3 && css.threeDirtyInput,
           )}
         >
-          <Title
-            title="Registration"
-            description="Thank you for your interest in our platform."
-          />
+          <div>
+            <Title
+              title="Registration"
+              description="Thank you for your interest in our platform."
+            />
+          </div>
 
           <RegistrationForm
             changeDirtyInputs={(count) => setCountDirtyInputs(count)}

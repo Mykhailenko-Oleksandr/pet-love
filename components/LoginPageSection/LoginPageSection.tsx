@@ -21,10 +21,12 @@ export default function LoginPageSection() {
             countDirtyInputs === 1 && css.oneDirtyInput,
           )}
         >
-          <Title
-            title="Log in"
-            description="Welcome! Please enter your credentials to login to the platform:"
-          />
+          <div>
+            <Title
+              title="Log in"
+              description="Welcome! Please enter your credentials to login to the platform:"
+            />
+          </div>
 
           <LoginForm
             changeDirtyInputs={(count) => setCountDirtyInputs(count)}
