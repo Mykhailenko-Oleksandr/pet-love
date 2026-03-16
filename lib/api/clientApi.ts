@@ -1,6 +1,7 @@
 import { User } from "@/types/user";
 import { nextServer } from "./api";
 import { News } from "@/types/news";
+import { Friends } from "@/types/friends";
 
 export interface NewsResponse {
   page: number;
@@ -51,5 +52,11 @@ export async function getNews(keyword: string, page: number, limit?: number) {
     },
   });
 
+  return res.data;
+}
+
+// Friends
+export async function getFriends() {
+  const res = await nextServer.get<Friends[]>("/friends");
   return res.data;
 }
