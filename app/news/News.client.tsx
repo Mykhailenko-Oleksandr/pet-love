@@ -29,7 +29,18 @@ export default function NewsClient() {
           <Title title="News" />
           <SearchField search={(word) => setSearchWord(word)} />
         </div>
-        {data && data.results.length > 0 && <NewsList news={data.results} />}
+
+        {data && data.results.length > 0 ? (
+          <NewsList news={data.results} />
+        ) : (
+          <p className={css.textMessage}>Your search returned no results.</p>
+        )}
+
+        {isError && (
+          <p className={css.textMessage}>
+            There was an error, please try again...
+          </p>
+        )}
 
         {isSuccess && totalPages > 1 && (
           <Pagination
