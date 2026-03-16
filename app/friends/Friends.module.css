@@ -3,14 +3,31 @@
   padding-bottom: 80px;
 }
 
+.textMessage {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
 @media only screen and (min-width: 768px) {
   .section {
     padding-top: 53px;
+  }
+
+  .textMessage {
+    font-size: 16px;
+    line-height: 125%;
   }
 }
 
 @media only screen and (min-width: 1280px) {
   .section {
     padding-top: 64px;
+  }
+
+  .textMessage {
+    font-size: 18px;
   }
 }

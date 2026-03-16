@@ -1,0 +1,112 @@
+.item {
+  position: relative;
+  width: 100%;
+  padding: 40px 25px 40px 20px;
+
+  display: flex;
+  gap: 14px;
+}
+
+.img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.contentBox {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.04em;
+  transition: color 300ms ease;
+
+  &:hover {
+    color: #f6b83d;
+  }
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contactItem {
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  color: rgba(38, 38, 38, 0.5);
+
+  height: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+
+  & a {
+    color: #262626;
+    transition: color 300ms ease;
+
+    &:hover {
+      color: #f6b83d;
+    }
+  }
+}
+
+.timeWorkBadge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  border-radius: 30px;
+  padding: 8px;
+  background-color: #fff4df;
+
+  font-size: 12px;
+  line-height: 133%;
+  letter-spacing: -0.02em;
+  color: #f6b83d;
+}
+
+@media only screen and (min-width: 768px) {
+  .item {
+    width: unset;
+    flex-basis: calc((100% - 20px) / 2);
+    padding-right: 20px;
+    gap: 16px;
+  }
+
+  .img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .contentBox {
+    gap: 20px;
+  }
+
+  .title {
+    font-size: 20px;
+    line-height: 130%;
+  }
+
+  .timeWorkBadge {
+    font-size: 14px;
+    line-height: 129%;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .item {
+    flex-basis: calc((100% - 60px) / 3);
+    padding: 40px 40px 40px 20px;
+    gap: 20px;
+  }
+}
