@@ -15,7 +15,11 @@ export default async function Notices() {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <NoticesClient />
+      <NoticesClient
+        categories={categories}
+        genders={genders}
+        species={species}
+      />
     </HydrationBoundary>
   );
 }

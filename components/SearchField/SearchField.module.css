@@ -5,7 +5,7 @@
 .input {
   border: 1px solid rgba(38, 38, 38, 0.15);
   border-radius: 30px;
-  padding: 12px 59px 12px 12px;
+  padding: 12px 63px 12px 12px;
   width: 100%;
   outline: none;
 
@@ -68,7 +68,10 @@
   .box.inNoticesFilters {
     width: 265px;
   }
-}
 
-@media only screen and (min-width: 1280px) {
+  .input {
+    padding: 14px 65px 14px 14px;
+    font-size: 16px;
+    line-height: 125%;
+  }
 }

@@ -1,0 +1,119 @@
+.label {
+  width: 100%;
+}
+
+:global(.customSelect__control) {
+  border: none !important;
+  cursor: pointer !important;
+  border-radius: 30px !important;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  color: #262626;
+  text-transform: capitalize;
+
+  min-height: unset !important;
+}
+
+:global(.customSelect__control--is-focused) {
+  box-shadow: none !important;
+}
+
+:global(.customSelect__value-container) {
+  padding: 12px !important;
+  padding-right: unset !important;
+}
+
+:global(.customSelect__single-value) {
+  margin: 0 !important;
+  color: #262626 !important;
+}
+
+:global(.customSelect__indicator-separator) {
+  display: none;
+}
+
+:global(.customSelect__indicator) {
+  padding: 12px !important;
+
+  & svg {
+    fill: #262626;
+    transition: transform 300ms ease;
+  }
+}
+
+:global(.customSelect__control--menu-is-open .customSelect__indicator) {
+  & svg {
+    transform: rotate(180deg);
+  }
+}
+
+:global(.customSelect__menu) {
+  border-radius: 15px !important;
+  box-shadow: none !important;
+  margin-top: 4px !important;
+  background-color: #fff !important;
+  padding: 8px 12px;
+  max-height: 216px !important;
+}
+
+:global(.customSelect__menu-list) {
+  padding-top: unset !important;
+  padding-bottom: unset !important;
+  max-height: 200px !important;
+}
+
+:global(.customSelect__option) {
+  cursor: pointer !important;
+
+  font-weight: 500;
+  font-size: 14px !important;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  color: rgba(38, 38, 38, 0.6) !important;
+  text-transform: capitalize;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 4px 0 !important;
+
+  transition: color 300ms ease;
+}
+
+:global(.customSelect__option--is-focused) {
+  background-color: transparent !important;
+  color: #f9b020 !important;
+}
+
+:global(.customSelect__option--is-selected) {
+  background-color: transparent !important;
+  color: #f6b83d !important;
+}
+
+@media only screen and (min-width: 768px) {
+  :global(.customSelect__control) {
+    font-size: 16px;
+    line-height: 125%;
+  }
+
+  :global(.customSelect__value-container) {
+    padding: 14px !important;
+    padding-right: unset !important;
+  }
+
+  :global(.customSelect__indicator) {
+    padding: 14px !important;
+  }
+
+  :global(.customSelect__menu) {
+    padding: 10px 14px;
+  }
+
+  :global(.customSelect__option) {
+    font-size: 16px !important;
+    line-height: 125%;
+  }
+}

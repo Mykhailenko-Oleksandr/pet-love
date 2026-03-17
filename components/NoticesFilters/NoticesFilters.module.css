@@ -52,12 +52,14 @@
 
   .categoryGenderBox {
     gap: 16px;
+    width: 356px;
   }
 
   .bottomFilersBox {
     flex-direction: row;
     align-items: center;
     gap: 16px;
+    width: 433px;
   }
 }
 
