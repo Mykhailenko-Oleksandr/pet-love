@@ -8,7 +8,7 @@ import { useState } from "react";
 
 export default function NoticesClient() {
   const [searchWord, setSearchWord] = useState("");
-  console.log("searchWord", searchWord);
+  
 
   return (
     <section className={css.section}>

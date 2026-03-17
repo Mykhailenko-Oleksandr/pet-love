@@ -27,3 +27,33 @@ export async function getFriends() {
   });
   return res.data;
 }
+
+export async function getCategories() {
+  const cookieStore = await cookies();
+  const res = await nextServer.get<string[]>("/notices/categories", {
+    headers: {
+      Cookie: cookieStore.toString(),
+    },
+  });
+  return res.data;
+}
+
+export async function getGenders() {
+  const cookieStore = await cookies();
+  const res = await nextServer.get<string[]>("/notices/sex", {
+    headers: {
+      Cookie: cookieStore.toString(),
+    },
+  });
+  return res.data;
+}
+
+export async function getSpecies() {
+  const cookieStore = await cookies();
+  const res = await nextServer.get<string[]>("/notices/species", {
+    headers: {
+      Cookie: cookieStore.toString(),
+    },
+  });
+  return res.data;
+}
