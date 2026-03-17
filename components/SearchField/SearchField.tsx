@@ -1,13 +1,18 @@
 "use client";
 
+import clsx from "clsx";
 import css from "./SearchField.module.css";
 import { ChangeEvent, KeyboardEvent, useState } from "react";
 
 interface SearchFieldProps {
   search: (value: string) => void;
+  inNoticesFilters?: boolean;
 }
 
-export default function SearchField({ search }: SearchFieldProps) {
+export default function SearchField({
+  search,
+  inNoticesFilters,
+}: SearchFieldProps) {
   const [searchWord, setSearchWord] = useState("");
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -19,14 +24,14 @@ export default function SearchField({ search }: SearchFieldProps) {
   }
 
   return (
-    <div className={css.box}>
+    <div className={clsx(css.box, inNoticesFilters && css.inNoticesFilters)}>
       <input
         type="text"
         placeholder="Search"
         value={searchWord}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
-        className={css.input}
+        className={clsx(css.input, inNoticesFilters && css.noBorder)}
       ></input>
       <div className={css.btnsBox}>
         {searchWord.length > 0 && (

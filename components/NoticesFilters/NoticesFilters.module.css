@@ -1,0 +1,74 @@
+.filtersWrap {
+  border-radius: 30px;
+  background-color: #fff4df;
+  padding: 20px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.filtersBox {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(38, 38, 38, 0.1);
+  margin-bottom: 20px;
+}
+
+.topFiltersBox {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.categoryGenderBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bottomFilersBox {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media only screen and (min-width: 768px) {
+  .filtersWrap {
+    padding: 40px 32px;
+    margin-top: 44px;
+    margin-bottom: 32px;
+  }
+
+  .filtersBox {
+    gap: 16px;
+  }
+
+  .topFiltersBox {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .categoryGenderBox {
+    gap: 16px;
+  }
+
+  .bottomFilersBox {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .filtersWrap {
+    padding: 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  .filtersBox {
+    flex-direction: row;
+  }
+}
