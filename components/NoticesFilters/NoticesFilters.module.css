@@ -73,4 +73,13 @@
   .filtersBox {
     flex-direction: row;
   }
+
+  .categoryGenderBox {
+    width: 406px;
+
+    & label:first-child {
+      flex-shrink: 0;
+      width: 200px;
+    }
+  }
 }

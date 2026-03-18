@@ -1,6 +1,8 @@
+import { Location } from "@/types/location";
 import CustomSelect from "../CustomSelect/CustomSelect";
 import SearchField from "../SearchField/SearchField";
 import css from "./NoticesFilters.module.css";
+import LocationsSelect from "../LocationsSelect/LocationsSelect";
 
 interface NoticesFiltersProps {
   changeSearchWord: (search: string) => void;
@@ -10,6 +12,8 @@ interface NoticesFiltersProps {
   changeGender: (search: string) => void;
   species: string[];
   changeType: (search: string) => void;
+  locations: Location[];
+  changeIdLocation: (id: string) => void;
 }
 
 export default function NoticesFilters({
@@ -20,6 +24,8 @@ export default function NoticesFilters({
   changeGender,
   species,
   changeType,
+  locations,
+  changeIdLocation,
 }: NoticesFiltersProps) {
   return (
     <div className={css.filtersWrap}>
@@ -45,7 +51,10 @@ export default function NoticesFilters({
             onChange={changeType}
             placeholder="By type"
           />
-          <p>5</p>
+          <LocationsSelect
+            locations={locations}
+            changeIdLocation={changeIdLocation}
+          />
         </div>
       </div>
     </div>

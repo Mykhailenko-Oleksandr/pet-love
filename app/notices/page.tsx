@@ -4,7 +4,12 @@ import {
   QueryClient,
 } from "@tanstack/react-query";
 import NoticesClient from "./Notices.client";
-import { getCategories, getGenders, getSpecies } from "@/lib/api/serverApi";
+import {
+  getCategories,
+  getGenders,
+  getLocations,
+  getSpecies,
+} from "@/lib/api/serverApi";
 
 export default async function Notices() {
   const queryClient = new QueryClient();
@@ -12,6 +17,7 @@ export default async function Notices() {
   const categories = await getCategories();
   const genders = await getGenders();
   const species = await getSpecies();
+  const locations = await getLocations();
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
@@ -19,6 +25,7 @@ export default async function Notices() {
         categories={categories}
         genders={genders}
         species={species}
+        locations={locations}
       />
     </HydrationBoundary>
   );

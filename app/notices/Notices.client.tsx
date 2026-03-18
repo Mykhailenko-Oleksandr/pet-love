@@ -5,22 +5,28 @@ import css from "./Notices.module.css";
 import Title from "@/components/Title/Title";
 import NoticesFilters from "@/components/NoticesFilters/NoticesFilters";
 import { useState } from "react";
+import { Location } from "@/types/location";
 
 interface NoticesClientProps {
   categories: string[];
   genders: string[];
   species: string[];
+  locations: Location[];
 }
 
 export default function NoticesClient({
   categories,
   genders,
   species,
+  locations,
 }: NoticesClientProps) {
   const [searchWord, setSearchWord] = useState("");
   const [category, setCategory] = useState("");
   const [gender, setGender] = useState("");
   const [type, setType] = useState("");
+  const [idLocation, setIdLocation] = useState("");
+
+  console.log("idLocation", idLocation);
 
   return (
     <section className={css.section}>
@@ -36,6 +42,8 @@ export default function NoticesClient({
           changeGender={(value) => setGender(value)}
           species={species}
           changeType={(value) => setType(value)}
+          locations={locations}
+          changeIdLocation={(id) => setIdLocation(id)}
         />
       </div>
       <div className="container"></div>

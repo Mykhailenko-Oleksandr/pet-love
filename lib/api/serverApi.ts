@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { nextServer } from "./api";
 import { NewsResponse } from "./clientApi";
 import { Friends } from "@/types/friends";
+import { Location } from "@/types/location";
 
 export async function getNews(keyword: string, page: number, limit?: number) {
   const cookieStore = await cookies();
@@ -51,6 +52,16 @@ export async function getGenders() {
 export async function getSpecies() {
   const cookieStore = await cookies();
   const res = await nextServer.get<string[]>("/notices/species", {
+    headers: {
+      Cookie: cookieStore.toString(),
+    },
+  });
+  return res.data;
+}
+
+export async function getLocations() {
+  const cookieStore = await cookies();
+  const res = await nextServer.get<Location[]>("/cities/locations", {
     headers: {
       Cookie: cookieStore.toString(),
     },

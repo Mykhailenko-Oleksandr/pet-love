@@ -31,6 +31,10 @@
   color: #262626 !important;
 }
 
+:global(.customSelect__placeholder) {
+  margin: 0 !important;
+}
+
 :global(.customSelect__indicator-separator) {
   display: none;
 }
