@@ -2,12 +2,33 @@ import { User } from "@/types/user";
 import { nextServer } from "./api";
 import { News } from "@/types/news";
 import { Friends } from "@/types/friends";
+import { Notice } from "@/types/notice";
+import { Category } from "@/types/category";
+import { Species } from "@/types/species";
 
 export interface NewsResponse {
   page: number;
   perPage: number;
   totalPages: number;
   results: News[];
+}
+
+export interface NoticesResponse {
+  page: number;
+  perPage: number;
+  totalPages: number;
+  results: Notice[];
+}
+
+export interface NoticesRequest {
+  page?: number;
+  limit?: number;
+  keyword?: string;
+  category?: Category;
+  species?: Species;
+  locationId?: string;
+  bySort?: string;
+  sex?: "unknown" | "female" | "male" | "multiple";
 }
 
 interface RegisterRequest {
@@ -58,5 +79,51 @@ export async function getNews(keyword: string, page: number, limit?: number) {
 // Friends
 export async function getFriends() {
   const res = await nextServer.get<Friends[]>("/friends");
+  return res.data;
+}
+
+// Notices
+export async function getNotices({
+  page = 1,
+  limit = 6,
+  keyword,
+  category,
+  species,
+  locationId,
+  bySort,
+  sex,
+}: NoticesRequest) {
+  let byPopularity: boolean | undefined;
+  let byPrice: boolean | undefined;
+
+  if (bySort === "popular") {
+    byPopularity = true;
+  }
+
+  if (bySort === "unpopular") {
+    byPopularity = false;
+  }
+
+  if (bySort === "cheap") {
+    byPrice = true;
+  }
+
+  if (bySort === "expensive") {
+    byPrice = false;
+  }
+
+  const res = await nextServer.get<NoticesResponse>("/notices", {
+    params: {
+      page,
+      limit,
+      keyword,
+      category,
+      species,
+      locationId,
+      sex,
+      byPopularity: byPopularity ?? undefined,
+      byPrice: byPrice ?? undefined,
+    },
+  });
   return res.data;
 }

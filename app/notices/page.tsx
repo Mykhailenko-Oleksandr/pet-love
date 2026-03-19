@@ -19,6 +19,8 @@ export default async function Notices() {
   const species = await getSpecies();
   const locations = await getLocations();
 
+  // const notices = await getNotices({ category: "sell" });
+
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <NoticesClient
