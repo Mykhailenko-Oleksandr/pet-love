@@ -25,8 +25,7 @@ export default function NoticesClient({
   const [gender, setGender] = useState("");
   const [type, setType] = useState("");
   const [idLocation, setIdLocation] = useState("");
-
-  console.log("idLocation", idLocation);
+  const [bySort, setBySort] = useState("");
 
   return (
     <section className={css.section}>
@@ -44,6 +43,8 @@ export default function NoticesClient({
           changeType={(value) => setType(value)}
           locations={locations}
           changeIdLocation={(id) => setIdLocation(id)}
+          bySort={bySort}
+          changeBySort={(value) => setBySort(value)}
         />
       </div>
       <div className="container"></div>

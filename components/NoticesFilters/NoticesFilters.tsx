@@ -3,6 +3,7 @@ import CustomSelect from "../CustomSelect/CustomSelect";
 import SearchField from "../SearchField/SearchField";
 import css from "./NoticesFilters.module.css";
 import LocationsSelect from "../LocationsSelect/LocationsSelect";
+import RadioButton from "../RadioButton/RadioButton";
 
 interface NoticesFiltersProps {
   changeSearchWord: (search: string) => void;
@@ -14,6 +15,8 @@ interface NoticesFiltersProps {
   changeType: (search: string) => void;
   locations: Location[];
   changeIdLocation: (id: string) => void;
+  bySort: string;
+  changeBySort: (value: string) => void;
 }
 
 export default function NoticesFilters({
@@ -26,6 +29,8 @@ export default function NoticesFilters({
   changeType,
   locations,
   changeIdLocation,
+  bySort,
+  changeBySort,
 }: NoticesFiltersProps) {
   return (
     <div className={css.filtersWrap}>
@@ -56,6 +61,36 @@ export default function NoticesFilters({
             changeIdLocation={changeIdLocation}
           />
         </div>
+      </div>
+      <div className={css.btnsFilterBox}>
+        <RadioButton
+          name="bySort"
+          value="popular"
+          label="Popular"
+          currentSort={bySort}
+          onChange={changeBySort}
+        />
+        <RadioButton
+          name="bySort"
+          value="unpopular"
+          label="Unpopular"
+          currentSort={bySort}
+          onChange={changeBySort}
+        />
+        <RadioButton
+          name="bySort"
+          value="cheap"
+          label="Cheap"
+          currentSort={bySort}
+          onChange={changeBySort}
+        />
+        <RadioButton
+          name="bySort"
+          value="expensive"
+          label="Expensive"
+          currentSort={bySort}
+          onChange={changeBySort}
+        />
       </div>
     </div>
   );

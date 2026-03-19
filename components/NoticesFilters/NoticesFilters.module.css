@@ -33,6 +33,13 @@
   gap: 12px;
 }
 
+.btnsFilterBox {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 @media only screen and (min-width: 768px) {
   .filtersWrap {
     padding: 40px 32px;
@@ -60,6 +67,10 @@
     align-items: center;
     gap: 16px;
     width: 433px;
+  }
+
+  .btnsFilterBox {
+    gap: 8px;
   }
 }
 

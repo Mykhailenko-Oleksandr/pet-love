@@ -1,0 +1,63 @@
+.label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  border-radius: 30px;
+  padding: 12px;
+  background-color: #fff;
+  cursor: pointer;
+
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+}
+
+.btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-color: transparent;
+
+  & svg {
+    fill: none;
+    stroke: #fff;
+    transition: transform 300ms ease;
+  }
+
+  &:hover svg,
+  &:focus svg {
+    transform: scale(1.1);
+  }
+
+  &:active svg {
+    transform: scale(1);
+  }
+}
+
+.radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+label:has(.radio:checked) {
+  background-color: #f6b83d;
+  color: #fff;
+
+  & .btn {
+    display: flex;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .label {
+    gap: 8px;
+    padding: 14px;
+    font-size: 16px;
+    line-height: 125%;
+  }
+}
