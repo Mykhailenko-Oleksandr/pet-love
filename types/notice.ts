@@ -5,6 +5,7 @@ export interface Notice {
   _id: string;
   species: Species;
   category: Category;
+  price?: number;
   title: string;
   name: string;
   birthday: string;

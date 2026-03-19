@@ -29,7 +29,7 @@ export default function CustomSelect({
   placeholder,
 }: CustomSelectProps) {
   const options: IOption[] = [
-    { value: "all", label: "Show all" },
+    { value: "", label: "Show all" },
     ...values.map((val) => {
       return { value: val.toString(), label: val };
     }),

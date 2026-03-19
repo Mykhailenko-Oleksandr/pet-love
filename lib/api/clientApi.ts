@@ -24,11 +24,11 @@ export interface NoticesRequest {
   page?: number;
   limit?: number;
   keyword?: string;
-  category?: Category;
-  species?: Species;
+  category?: string;
+  species?: string;
   locationId?: string;
   bySort?: string;
-  sex?: "unknown" | "female" | "male" | "multiple";
+  sex?: string;
 }
 
 interface RegisterRequest {
@@ -97,11 +97,11 @@ export async function getNotices({
   let byPrice: boolean | undefined;
 
   if (bySort === "popular") {
-    byPopularity = true;
+    byPopularity = false;
   }
 
   if (bySort === "unpopular") {
-    byPopularity = false;
+    byPopularity = true;
   }
 
   if (bySort === "cheap") {

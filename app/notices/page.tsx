@@ -8,8 +8,17 @@ import {
   getCategories,
   getGenders,
   getLocations,
+  getNotices,
   getSpecies,
 } from "@/lib/api/serverApi";
+
+const page = 1;
+const searchWord = "";
+const category = "";
+const sex = "";
+const type = "";
+const locationId = "";
+const bySort = "";
 
 export default async function Notices() {
   const queryClient = new QueryClient();
@@ -19,7 +28,28 @@ export default async function Notices() {
   const species = await getSpecies();
   const locations = await getLocations();
 
-  // const notices = await getNotices({ category: "sell" });
+  await queryClient.prefetchQuery({
+    queryKey: [
+      "notices",
+      page,
+      searchWord,
+      category,
+      sex,
+      type,
+      locationId,
+      bySort,
+    ],
+    queryFn: () =>
+      getNotices({
+        page,
+        keyword: searchWord,
+        category,
+        sex,
+        species: type,
+        locationId,
+        bySort,
+      }),
+  });
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>

@@ -3,6 +3,7 @@ import { nextServer } from "./api";
 import { NewsResponse, NoticesRequest, NoticesResponse } from "./clientApi";
 import { Friends } from "@/types/friends";
 import { Location } from "@/types/location";
+import { Category } from "@/types/category";
 
 export async function getNews(keyword: string, page: number, limit?: number) {
   const cookieStore = await cookies();
@@ -31,7 +32,7 @@ export async function getFriends() {
 
 export async function getCategories() {
   const cookieStore = await cookies();
-  const res = await nextServer.get<string[]>("/notices/categories", {
+  const res = await nextServer.get<Category[]>("/notices/categories", {
     headers: {
       Cookie: cookieStore.toString(),
     },
@@ -85,11 +86,11 @@ export async function getNotices({
   let byPrice: boolean | undefined;
 
   if (bySort === "popular") {
-    byPopularity = true;
+    byPopularity = false;
   }
 
   if (bySort === "unpopular") {
-    byPopularity = false;
+    byPopularity = true;
   }
 
   if (bySort === "cheap") {
