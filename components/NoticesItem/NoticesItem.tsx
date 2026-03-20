@@ -4,9 +4,11 @@ import { Notice, NoticeFull } from "@/types/notice";
 import css from "./NoticesItem.module.css";
 import Image from "next/image";
 import { useAuthStore } from "@/lib/store/authStore";
-import { getNoticeById } from "@/lib/api/clientApi";
+import { addFavoriteNotice, currentUser, getNoticeById, removeFavoriteNotice } from "@/lib/api/clientApi";
 import { ApiError } from "@/app/api/api";
 import toast from "react-hot-toast";
+import { reversBirthdayDate } from "@/utils/reverseBirthdayDate";
+import clsx from "clsx";
 
 interface NoticesItemProps {
   notice: Notice;
@@ -21,24 +23,49 @@ export default function NoticesItem({
   openModalNotice,
   changeFullInfoNotice,
 }: NoticesItemProps) {
-  const { user, isAuthenticated } = useAuthStore();
+  const { user, isAuthenticated, setUser } = useAuthStore();
 
-  const reversBirthdayDate = () => {
-    if (notice.birthday) {
-      const year = notice.birthday.slice(0, 4);
-      const month = notice.birthday.slice(5, 7);
-      const day = notice.birthday.slice(8, 10);
+  const isFavorite = user?.noticesFavorites.some(
+    (favoriteNotice) => favoriteNotice._id === notice._id,
+  );
 
-      return `${day}.${month}.${year}`;
-    }
-
-    return "Not specified";
-  };
-
-  const handleClickLikeBtn = () => {
+  const handleClickLikeBtn = async () => {
     if (!isAuthenticated) {
       openAttentionModal();
+      return;
     }
+
+       if (!isFavorite) {
+         try {
+           await addFavoriteNotice(notice._id);
+           const updatedUser = await currentUser();
+           setUser(updatedUser);
+         } catch (error: unknown) {
+           const err = error as ApiError;
+
+           toast.error(
+             err.response?.data?.response?.validation?.body?.message ||
+               err.response?.data?.response?.message ||
+               err.message ||
+               "There was an error, please try again",
+           );
+         }
+       } else {
+         try {
+           await removeFavoriteNotice(notice._id);
+           const updatedUser = await currentUser();
+           setUser(updatedUser);
+         } catch (error: unknown) {
+           const err = error as ApiError;
+
+           toast.error(
+             err.response?.data?.response?.validation?.body?.message ||
+               err.response?.data?.response?.message ||
+               err.message ||
+               "There was an error, please try again",
+           );
+         }
+       }
   };
 
   const handleClickLearnMoreBtn = async () => {
@@ -94,7 +121,7 @@ export default function NoticesItem({
         </li>
         <li className={css.itemInfo}>
           <p className={css.titleItemInfo}>Birthday</p>
-          <p className={css.valueInfoPet}>{reversBirthdayDate()}</p>
+          <p className={css.valueInfoPet}>{reversBirthdayDate(notice)}</p>
         </li>
         <li className={css.itemInfo}>
           <p className={css.titleItemInfo}>Sex</p>
@@ -112,7 +139,7 @@ export default function NoticesItem({
 
       <p className={css.comment}>{notice.comment}</p>
       <p className={css.price}>
-        {notice.price ? `$${notice.price}` : "No price"}
+        {notice.price ? `$${notice.price.toFixed(2)}` : "No price"}
       </p>
 
       <div className={css.btnsBox}>
@@ -128,7 +155,7 @@ export default function NoticesItem({
           type="button"
           aria-label="Add-remove favorite pet"
           onClick={handleClickLikeBtn}
-          className={css.likeBtn}
+          className={clsx(css.likeBtn, isFavorite && css.isFavorite)}
         >
           <svg width={18} height={18}>
             <use href="/sprite.svg#heart"></use>

@@ -132,3 +132,15 @@ export async function getNoticeById(id: string) {
   const res = await nextServer.get<NoticeFull>(`/notices/${id}`);
   return res.data;
 }
+
+export async function addFavoriteNotice(id: string) {
+  const res = await nextServer.post<string[]>(`/notices/favorites/add/${id}`);
+  return res.data;
+}
+
+export async function removeFavoriteNotice(id: string) {
+  const res = await nextServer.delete<string[]>(
+    `/notices/favorites/remove/${id}`,
+  );
+  return res.data;
+}

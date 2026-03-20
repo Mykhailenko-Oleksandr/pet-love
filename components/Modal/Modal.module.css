@@ -65,6 +65,8 @@
     }
 
     &.isNoticesModal {
+      max-width: unset;
+      width: unset;
       padding: 40px 71px;
     }
   }

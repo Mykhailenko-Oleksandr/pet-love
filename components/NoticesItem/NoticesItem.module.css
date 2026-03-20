@@ -145,6 +145,10 @@
     stroke: #f6b83d;
   }
 
+  &.isFavorite svg {
+    fill: #f6b83d;
+  }
+
   &:hover,
   &:focus {
     background-color: #fbe7c1;
