@@ -3,13 +3,19 @@
 import { createPortal } from "react-dom";
 import css from "./Modal.module.css";
 import { MouseEvent, ReactNode, useEffect } from "react";
+import clsx from "clsx";
 
 interface ModalProps {
   children: ReactNode;
   onClose: () => void;
+  isAttentionModal?: boolean;
 }
 
-export default function Modal({ children, onClose }: ModalProps) {
+export default function Modal({
+  children,
+  onClose,
+  isAttentionModal,
+}: ModalProps) {
   function handleClickBackdrop(e: MouseEvent<HTMLDivElement>) {
     if (e.target === e.currentTarget) onClose();
   }
@@ -30,7 +36,9 @@ export default function Modal({ children, onClose }: ModalProps) {
 
   return createPortal(
     <div className={css.backdrop} onClick={handleClickBackdrop}>
-      <div className={css.modal}>
+      <div
+        className={clsx(css.modal, isAttentionModal && css.isAttentionModal)}
+      >
         <button
           type="button"
           onClick={onClose}

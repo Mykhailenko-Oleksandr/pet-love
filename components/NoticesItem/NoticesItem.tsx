@@ -1,12 +1,21 @@
+"use client";
+
 import { Notice } from "@/types/notice";
 import css from "./NoticesItem.module.css";
 import Image from "next/image";
+import { useAuthStore } from "@/lib/store/authStore";
 
 interface NoticesItemProps {
   notice: Notice;
+  openAttentionModal: () => void;
 }
 
-export default function NoticesItem({ notice }: NoticesItemProps) {
+export default function NoticesItem({
+  notice,
+  openAttentionModal,
+}: NoticesItemProps) {
+  const { user, isAuthenticated } = useAuthStore();
+
   const reversBirthdayDate = () => {
     if (notice.birthday) {
       const year = notice.birthday.slice(0, 4);
@@ -19,6 +28,18 @@ export default function NoticesItem({ notice }: NoticesItemProps) {
     return "Not specified";
   };
 
+  const handleClickLikeBtn = () => {
+    if (!isAuthenticated) {
+      openAttentionModal();
+    }
+  };
+
+  const handleClickLearnMoreBtn = () => {
+    if (!isAuthenticated) {
+      openAttentionModal();
+    }
+  };
+
   return (
     <li className={css.item}>
       <div className={css.imgBox}>
@@ -26,6 +47,8 @@ export default function NoticesItem({ notice }: NoticesItemProps) {
           src={notice.imgURL}
           alt={notice.title}
           fill
+          sizes="(max-width: 767px) 287px, (max-width: 1279px) 294px, 315px"
+          loading="eager"
           className={css.img}
         />
       </div>
@@ -69,13 +92,18 @@ export default function NoticesItem({ notice }: NoticesItemProps) {
       </p>
 
       <div className={css.btnsBox}>
-        <button type="button" className={css.learnMoreBtn}>
+        <button
+          type="button"
+          onClick={handleClickLearnMoreBtn}
+          className={css.learnMoreBtn}
+        >
           Learn more
         </button>
 
         <button
           type="button"
           aria-label="Add-remove favorite pet"
+          onClick={handleClickLikeBtn}
           className={css.likeBtn}
         >
           <svg width={18} height={18}>

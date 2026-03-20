@@ -4,13 +4,23 @@ import NoticesItem from "../NoticesItem/NoticesItem";
 
 interface NoticesListProps {
   notices: Notice[];
+  openAttentionModal: () => void;
 }
 
-export default function NoticesList({ notices }: NoticesListProps) {
+export default function NoticesList({
+  notices,
+  openAttentionModal,
+}: NoticesListProps) {
   return (
     <ul className={css.list}>
       {notices.map((notice) => {
-        return <NoticesItem notice={notice} key={notice._id} />;
+        return (
+          <NoticesItem
+            notice={notice}
+            openAttentionModal={openAttentionModal}
+            key={notice._id}
+          />
+        );
       })}
     </ul>
   );

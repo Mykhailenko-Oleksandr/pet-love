@@ -8,12 +8,13 @@ import { getNews } from "@/lib/api/clientApi";
 import { useState } from "react";
 import NewsList from "@/components/NewsList/NewsList";
 import Pagination from "@/components/Pagination/Pagination";
+import Loader from "@/components/Loader/Loader";
 
 export default function NewsClient() {
   const [searchWord, setSearchWord] = useState("");
   const [page, setPage] = useState(1);
 
-  const { data, isError, isSuccess } = useQuery({
+  const { data, isError, isSuccess, isLoading } = useQuery({
     queryKey: ["news", searchWord, page],
     queryFn: () => getNews(searchWord, page),
     placeholderData: keepPreviousData,
@@ -41,6 +42,8 @@ export default function NewsClient() {
             There was an error, please try again...
           </p>
         )}
+
+        {isLoading && <Loader backdrop={true} />}
 
         {isSuccess && totalPages > 1 && (
           <Pagination
