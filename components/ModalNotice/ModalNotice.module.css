@@ -162,6 +162,25 @@
   }
 }
 
+.contactBox:first-of-type {
+  margin-bottom: 15px;
+}
+
+.keyContact {
+  line-height: 140%;
+  letter-spacing: -0.02em;
+  color: rgba(38, 38, 38, 0.5);
+}
+
+.contactLink {
+  transition: color 300ms ease;
+
+  &:hover,
+  &:focus {
+    color: #f6b83d;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .imgBox {
     width: 150px;
