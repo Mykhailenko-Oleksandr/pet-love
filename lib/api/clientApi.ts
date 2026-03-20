@@ -2,7 +2,7 @@ import { User } from "@/types/user";
 import { nextServer } from "./api";
 import { News } from "@/types/news";
 import { Friends } from "@/types/friends";
-import { Notice } from "@/types/notice";
+import { Notice, NoticeFull } from "@/types/notice";
 import { Category } from "@/types/category";
 import { Species } from "@/types/species";
 
@@ -125,5 +125,10 @@ export async function getNotices({
       byPrice: byPrice ?? undefined,
     },
   });
+  return res.data;
+}
+
+export async function getNoticeById(id: string) {
+  const res = await nextServer.get<NoticeFull>(`/notices/${id}`);
   return res.data;
 }

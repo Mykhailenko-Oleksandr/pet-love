@@ -1,0 +1,44 @@
+.imgBox {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+
+  & img {
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+
+.imgBadge {
+  position: absolute;
+  top: 0;
+  left: 4px;
+
+  border-radius: 30px;
+  padding: 8px 14px;
+  background-color: #fff4df;
+
+  font-size: 12px;
+  line-height: 133%;
+  letter-spacing: -0.02em;
+  color: #f6b83d;
+  text-transform: capitalize;
+}
+
+@media only screen and (min-width: 768px) {
+  .imgBox {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 16px;
+  }
+
+  .imgBadge {
+    font-size: 14px;
+    line-height: 129%;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+}

@@ -9,12 +9,14 @@ interface ModalProps {
   children: ReactNode;
   onClose: () => void;
   isAttentionModal?: boolean;
+  isNoticesModal?: boolean;
 }
 
 export default function Modal({
   children,
   onClose,
   isAttentionModal,
+  isNoticesModal,
 }: ModalProps) {
   function handleClickBackdrop(e: MouseEvent<HTMLDivElement>) {
     if (e.target === e.currentTarget) onClose();
@@ -37,7 +39,11 @@ export default function Modal({
   return createPortal(
     <div className={css.backdrop} onClick={handleClickBackdrop}>
       <div
-        className={clsx(css.modal, isAttentionModal && css.isAttentionModal)}
+        className={clsx(
+          css.modal,
+          isAttentionModal && css.isAttentionModal,
+          isNoticesModal && css.isNoticesModal,
+        )}
       >
         <button
           type="button"

@@ -1,18 +1,25 @@
 "use client";
 
-import { Notice } from "@/types/notice";
+import { Notice, NoticeFull } from "@/types/notice";
 import css from "./NoticesItem.module.css";
 import Image from "next/image";
 import { useAuthStore } from "@/lib/store/authStore";
+import { getNoticeById } from "@/lib/api/clientApi";
+import { ApiError } from "@/app/api/api";
+import toast from "react-hot-toast";
 
 interface NoticesItemProps {
   notice: Notice;
   openAttentionModal: () => void;
+  openModalNotice: () => void;
+  changeFullInfoNotice: (value: NoticeFull | null) => void;
 }
 
 export default function NoticesItem({
   notice,
   openAttentionModal,
+  openModalNotice,
+  changeFullInfoNotice,
 }: NoticesItemProps) {
   const { user, isAuthenticated } = useAuthStore();
 
@@ -34,9 +41,26 @@ export default function NoticesItem({
     }
   };
 
-  const handleClickLearnMoreBtn = () => {
+  const handleClickLearnMoreBtn = async () => {
     if (!isAuthenticated) {
       openAttentionModal();
+      return;
+    }
+    try {
+      const fullInfoNotice = await getNoticeById(notice._id);
+      changeFullInfoNotice(fullInfoNotice);
+      openModalNotice();
+    } catch (error: unknown) {
+      const err = error as ApiError;
+
+      changeFullInfoNotice(null);
+
+      toast.error(
+        err.response?.data?.response?.validation?.body?.message ||
+          err.response?.data?.response?.message ||
+          err.message ||
+          "There was an error, please try again",
+      );
     }
   };
 

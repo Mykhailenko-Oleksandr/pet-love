@@ -4,7 +4,7 @@ import clsx from "clsx";
 import css from "./Notices.module.css";
 import Title from "@/components/Title/Title";
 import NoticesFilters from "@/components/NoticesFilters/NoticesFilters";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Location } from "@/types/location";
 import { Category } from "@/types/category";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
@@ -13,6 +13,8 @@ import NoticesList from "@/components/NoticesList/NoticesList";
 import Pagination from "@/components/Pagination/Pagination";
 import Loader from "@/components/Loader/Loader";
 import ModalAttention from "@/components/ModalAttention/ModalAttention";
+import ModalNotice from "@/components/ModalNotice/ModalNotice";
+import { NoticeFull } from "@/types/notice";
 
 interface NoticesClientProps {
   categories: Category[];
@@ -35,6 +37,14 @@ export default function NoticesClient({
   const [bySort, setBySort] = useState("");
   const [page, setPage] = useState(1);
   const [isModalAttention, setIsModalAttention] = useState(false);
+  const [isModalNotice, setIsModalNotice] = useState(false);
+  const [fullInfoNotice, setFullInfoNotice] = useState<NoticeFull | null>(null);
+
+  useEffect(() => {
+    if (!isModalNotice) {
+      setFullInfoNotice(null);
+    }
+  }, [isModalNotice]);
 
   const { data, isLoading, isError, isSuccess } = useQuery({
     queryKey: [
@@ -107,6 +117,8 @@ export default function NoticesClient({
             <NoticesList
               notices={data.results}
               openAttentionModal={() => setIsModalAttention(true)}
+              openModalNotice={() => setIsModalNotice(true)}
+              changeFullInfoNotice={(value) => setFullInfoNotice(value)}
             />
           ) : (
             <p className={css.textMessage}>Your search returned no results.</p>
@@ -132,6 +144,13 @@ export default function NoticesClient({
 
       {isModalAttention && (
         <ModalAttention onClose={() => setIsModalAttention(false)} />
+      )}
+
+      {isModalNotice && fullInfoNotice && (
+        <ModalNotice
+          notice={fullInfoNotice}
+          onClose={() => setIsModalNotice(false)}
+        />
       )}
     </>
   );

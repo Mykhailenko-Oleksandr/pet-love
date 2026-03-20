@@ -63,5 +63,9 @@
     &.isAttentionModal {
       padding: 60px;
     }
+
+    &.isNoticesModal {
+      padding: 40px 71px;
+    }
   }
 }
