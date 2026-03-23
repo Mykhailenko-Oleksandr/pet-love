@@ -1,10 +1,9 @@
-import { User } from "@/types/user";
+import { User, UserFull } from "@/types/user";
 import { nextServer } from "./api";
 import { News } from "@/types/news";
 import { Friends } from "@/types/friends";
 import { Notice, NoticeFull } from "@/types/notice";
-import { Category } from "@/types/category";
-import { Species } from "@/types/species";
+import axios from "axios";
 
 export interface NewsResponse {
   page: number;
@@ -42,6 +41,13 @@ interface LoginRequest {
   password: string;
 }
 
+interface updateUserRequest {
+  name?: string;
+  email?: string;
+  phone?: string;
+  avatar?: string;
+}
+
 // Auth
 export async function registerUser(body: RegisterRequest) {
   const res = await nextServer.post<User>("/users/signup", body);
@@ -59,7 +65,7 @@ export async function logoutUser() {
 }
 
 export async function currentUser() {
-  const res = await nextServer.get("/users/current");
+  const res = await nextServer.get<User>("/users/current");
   return res.data;
 }
 
@@ -142,5 +148,29 @@ export async function removeFavoriteNotice(id: string) {
   const res = await nextServer.delete<string[]>(
     `/notices/favorites/remove/${id}`,
   );
+  return res.data;
+}
+
+// Users
+
+export async function uploadImage(file: File): Promise<string> {
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("upload_preset", "avatars");
+
+  const res = await axios.post(
+    `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
+    formData,
+    {
+      headers: { "Content-Type": "multipart/form-data" },
+    },
+  );
+
+  return res.data.secure_url;
+}
+
+export async function updateUser(body: updateUserRequest) {
+  const res = await nextServer.patch<UserFull>("users/current/edit", body);
+
   return res.data;
 }

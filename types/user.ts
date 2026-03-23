@@ -1,4 +1,5 @@
 import { Notice } from "./notice";
+import { Pet } from "./pet";
 
 export interface User {
   _id: string;
@@ -7,4 +8,9 @@ export interface User {
   avatar?: string;
   phone?: string;
   noticesFavorites: Notice[];
+}
+
+export interface UserFull extends User {
+  noticesViewed: Notice[];
+  pets: Pet[];
 }

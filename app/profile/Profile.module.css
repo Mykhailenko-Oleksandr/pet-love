@@ -1,0 +1,22 @@
+.section {
+  padding-top: 2px;
+  padding-bottom: 56px;
+}
+
+@media only screen and (min-width: 768px) {
+  .section {
+    padding-top: unset;
+    padding-bottom: 60px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .section {
+    padding-bottom: 32px;
+
+    & div {
+      padding-left: 32px;
+      padding-right: 32px;
+    }
+  }
+}

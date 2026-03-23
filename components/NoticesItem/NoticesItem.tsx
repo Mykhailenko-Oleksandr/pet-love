@@ -4,7 +4,12 @@ import { Notice, NoticeFull } from "@/types/notice";
 import css from "./NoticesItem.module.css";
 import Image from "next/image";
 import { useAuthStore } from "@/lib/store/authStore";
-import { addFavoriteNotice, currentUser, getNoticeById, removeFavoriteNotice } from "@/lib/api/clientApi";
+import {
+  addFavoriteNotice,
+  currentUser,
+  getNoticeById,
+  removeFavoriteNotice,
+} from "@/lib/api/clientApi";
 import { ApiError } from "@/app/api/api";
 import toast from "react-hot-toast";
 import { reversBirthdayDate } from "@/utils/reverseBirthdayDate";
@@ -35,37 +40,37 @@ export default function NoticesItem({
       return;
     }
 
-       if (!isFavorite) {
-         try {
-           await addFavoriteNotice(notice._id);
-           const updatedUser = await currentUser();
-           setUser(updatedUser);
-         } catch (error: unknown) {
-           const err = error as ApiError;
+    if (!isFavorite) {
+      try {
+        await addFavoriteNotice(notice._id);
+        const updatedUser = await currentUser();
+        setUser(updatedUser);
+      } catch (error: unknown) {
+        const err = error as ApiError;
 
-           toast.error(
-             err.response?.data?.response?.validation?.body?.message ||
-               err.response?.data?.response?.message ||
-               err.message ||
-               "There was an error, please try again",
-           );
-         }
-       } else {
-         try {
-           await removeFavoriteNotice(notice._id);
-           const updatedUser = await currentUser();
-           setUser(updatedUser);
-         } catch (error: unknown) {
-           const err = error as ApiError;
+        toast.error(
+          err.response?.data?.response?.validation?.body?.message ||
+            err.response?.data?.response?.message ||
+            err.message ||
+            "There was an error, please try again",
+        );
+      }
+    } else {
+      try {
+        await removeFavoriteNotice(notice._id);
+        const updatedUser = await currentUser();
+        setUser(updatedUser);
+      } catch (error: unknown) {
+        const err = error as ApiError;
 
-           toast.error(
-             err.response?.data?.response?.validation?.body?.message ||
-               err.response?.data?.response?.message ||
-               err.message ||
-               "There was an error, please try again",
-           );
-         }
-       }
+        toast.error(
+          err.response?.data?.response?.validation?.body?.message ||
+            err.response?.data?.response?.message ||
+            err.message ||
+            "There was an error, please try again",
+        );
+      }
+    }
   };
 
   const handleClickLearnMoreBtn = async () => {

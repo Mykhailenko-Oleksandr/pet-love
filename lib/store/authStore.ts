@@ -1,9 +1,9 @@
-import { User } from "@/types/user";
+import { User, UserFull } from "@/types/user";
 import { create } from "zustand";
 
 type AuthStore = {
   isAuthenticated: boolean;
-  user: User | null;
+  user: User | UserFull | null;
   setUser: (user: User) => void;
   clearIsAuthenticated: () => void;
 };
