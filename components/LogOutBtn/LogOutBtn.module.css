@@ -51,6 +51,10 @@
     }
   }
 
+  &.inUserCard {
+    width: 114px;
+  }
+
   &:hover,
   &:focus {
     background-color: #f9b020;
@@ -70,8 +74,9 @@
       line-height: 125%;
       padding: 15px;
     }
-  }
-}
 
-@media only screen and (min-width: 1280px) {
+    &.inUserCard {
+      width: 136px;
+    }
+  }
 }

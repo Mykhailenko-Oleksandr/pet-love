@@ -1,0 +1,20 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+@media only screen and (min-width: 768px) {
+  .list {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .list {
+    flex-direction: column;
+    flex-wrap: unset;
+  }
+}

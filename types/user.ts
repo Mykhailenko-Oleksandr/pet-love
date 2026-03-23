@@ -8,6 +8,8 @@ export interface User {
   avatar?: string;
   phone?: string;
   noticesFavorites: Notice[];
+  noticesViewed?: Notice[];
+  pets?: Pet[];
 }
 
 export interface UserFull extends User {

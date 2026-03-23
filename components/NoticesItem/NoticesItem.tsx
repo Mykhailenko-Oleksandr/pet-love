@@ -126,7 +126,7 @@ export default function NoticesItem({
         </li>
         <li className={css.itemInfo}>
           <p className={css.titleItemInfo}>Birthday</p>
-          <p className={css.valueInfoPet}>{reversBirthdayDate(notice)}</p>
+          <p className={css.valueInfoPet}>{reversBirthdayDate({ notice })}</p>
         </li>
         <li className={css.itemInfo}>
           <p className={css.titleItemInfo}>Sex</p>

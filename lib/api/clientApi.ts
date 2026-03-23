@@ -69,6 +69,11 @@ export async function currentUser() {
   return res.data;
 }
 
+export async function getCurrentFullUser() {
+  const res = await nextServer.get<UserFull>("/users/current/full");
+  return res.data;
+}
+
 // News
 export async function getNews(keyword: string, page: number, limit?: number) {
   const res = await nextServer.get<NewsResponse>("/news", {

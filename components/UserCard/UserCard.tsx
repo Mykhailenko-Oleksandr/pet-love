@@ -9,10 +9,13 @@ import { updateUser, uploadImage } from "@/lib/api/clientApi";
 import toast from "react-hot-toast";
 import { useAuthStore } from "@/lib/store/authStore";
 import { ApiError } from "@/app/api/api";
+import PetsBlock from "../PetsBlock/PetsBlock";
 
 export default function UserCard() {
   const { user, setUser } = useAuthStore();
   const [modalEdit, setModalEdit] = useState(false);
+
+  console.log(user);
 
   async function handleFileChange(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
@@ -103,6 +106,8 @@ export default function UserCard() {
               {user.phone ? user.phone : "+380"}
             </li>
           </ul>
+
+          {<PetsBlock pets={user.pets} />}
         </>
       )}
     </div>

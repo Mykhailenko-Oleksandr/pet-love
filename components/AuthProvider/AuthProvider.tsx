@@ -1,6 +1,6 @@
 "use client";
 
-import { currentUser } from "@/lib/api/clientApi";
+import { getCurrentFullUser } from "@/lib/api/clientApi";
 import { useAuthStore } from "@/lib/store/authStore";
 import { useEffect } from "react";
 
@@ -17,7 +17,7 @@ export default function AuthProvider({ children }: Props) {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const user = await currentUser();
+        const user = await getCurrentFullUser();
         if (user) {
           if (user) setUser(user);
         } else {
