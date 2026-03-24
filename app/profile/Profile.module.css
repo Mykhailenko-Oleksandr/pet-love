@@ -16,6 +16,8 @@
   }
 
   .profileContainer {
+    display: flex;
+    gap: 32px;
     padding-left: 32px;
     padding-right: 32px;
   }

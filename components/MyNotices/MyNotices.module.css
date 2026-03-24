@@ -1,0 +1,94 @@
+.box {
+  padding-top: 40px;
+  width: 100%;
+}
+
+.tabsBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tabBtn {
+  border-radius: 30px;
+  padding: 12px;
+  background-color: transparent;
+  width: 123px;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  color: #262626;
+
+  transition: background-color 300ms ease;
+
+  &.currentTab {
+    background-color: #f6b83d;
+    color: #fff;
+
+    &:hover,
+    &:focus {
+      background-color: #f9b020;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    background-color: #fff4df;
+  }
+}
+
+.textNoFavorites {
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: #262626;
+
+  padding-top: 60px;
+  padding-bottom: 84px;
+
+  & span {
+    font-weight: 700;
+    color: #f6b83d;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .box {
+    padding-top: 32px;
+  }
+
+  .tabsBox {
+    gap: 8px;
+    margin-bottom: 38px;
+  }
+
+  .tabBtn {
+    padding: 14px;
+    width: 142px;
+    font-size: 16px;
+    line-height: 125%;
+  }
+
+  .textNoFavorites {
+    font-size: 16px;
+    line-height: 125%;
+    padding-top: 142px;
+    padding-bottom: 122px;
+    max-width: 458px;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .box {
+    padding-top: 40px;
+  }
+
+  .tabsBox {
+    margin-bottom: 32px;
+  }
+}

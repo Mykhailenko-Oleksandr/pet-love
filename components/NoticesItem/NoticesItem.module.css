@@ -145,8 +145,8 @@
     stroke: #f6b83d;
   }
 
-  &.isFavorite svg {
-    fill: #f6b83d;
+  &.noBtn {
+    display: none;
   }
 
   &:hover,
@@ -163,11 +163,43 @@
   .item {
     width: unset;
     flex-basis: calc((100% - 20px) / 2);
+
+    &.inProfile {
+      padding: 14px 14px 24px 14px;
+
+      & .imgBox {
+        height: 162px;
+        margin-bottom: 14px;
+      }
+
+      & .listInfo {
+        margin-bottom: 14px;
+      }
+
+      & .comment {
+        margin-bottom: 16px;
+      }
+
+      & .learnMoreBtn {
+        padding: 12px;
+      }
+
+      & .likeBtn {
+        width: 44px;
+        height: 44px;
+      }
+    }
   }
 
   .title {
     font-size: 18px;
     line-height: 133%;
+
+    max-width: 232px;
+    height: 24px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   .popularityNumber {
@@ -197,5 +229,14 @@
 @media only screen and (min-width: 1280px) {
   .item {
     flex-basis: calc((100% - 64px) / 3);
+
+    &.inProfile {
+      flex-basis: unset;
+      width: 320px;
+    }
+  }
+
+  .title {
+    max-width: 258px;
   }
 }

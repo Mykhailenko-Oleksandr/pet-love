@@ -1,30 +1,28 @@
-import { Notice, NoticeFull } from "@/types/notice";
+import { Notice } from "@/types/notice";
 import css from "./NoticesList.module.css";
 import NoticesItem from "../NoticesItem/NoticesItem";
+import clsx from "clsx";
 
 interface NoticesListProps {
   notices: Notice[];
-  openAttentionModal: () => void;
-  openModalNotice: () => void;
-  changeFullInfoNotice: (value: NoticeFull | null) => void;
+  profile?: boolean;
+  noticesViewed?: boolean;
 }
 
 export default function NoticesList({
   notices,
-  openAttentionModal,
-  openModalNotice,
-  changeFullInfoNotice,
+  profile,
+  noticesViewed,
 }: NoticesListProps) {
   return (
-    <ul className={css.list}>
+    <ul className={clsx(css.list, profile && css.inProfile)}>
       {notices.map((notice) => {
         return (
           <NoticesItem
             notice={notice}
-            openAttentionModal={openAttentionModal}
-            openModalNotice={openModalNotice}
             key={notice._id}
-            changeFullInfoNotice={changeFullInfoNotice}
+            profile={profile}
+            viewed={noticesViewed}
           />
         );
       })}

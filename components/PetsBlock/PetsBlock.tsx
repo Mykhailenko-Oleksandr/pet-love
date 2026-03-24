@@ -5,17 +5,12 @@ import css from "./PetsBlock.module.css";
 import Link from "next/link";
 import clsx from "clsx";
 import PetsList from "../PetsList/PetsList";
-import LogOutBtn from "../LogOutBtn/LogOutBtn";
-import { useState } from "react";
-import ModalApproveAction from "../ModalApproveAction/ModalApproveAction";
 
 interface Props {
   pets?: Pet[];
 }
 
 export default function PetsBlock({ pets }: Props) {
-  const [approveModal, setApproveModal] = useState(false);
-
   return (
     <>
       <div className={clsx(css.topBox, pets && pets.length == 0 && css.noPets)}>
@@ -29,12 +24,6 @@ export default function PetsBlock({ pets }: Props) {
       </div>
 
       {pets && pets.length > 0 && <PetsList pets={pets} />}
-
-      <LogOutBtn openModal={() => setApproveModal(true)} inMenu inUserCard />
-
-      {approveModal && (
-        <ModalApproveAction onClose={() => setApproveModal(false)} />
-      )}
     </>
   );
 }

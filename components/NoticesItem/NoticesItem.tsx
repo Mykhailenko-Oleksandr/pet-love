@@ -14,21 +14,31 @@ import { ApiError } from "@/app/api/api";
 import toast from "react-hot-toast";
 import { reversBirthdayDate } from "@/utils/reverseBirthdayDate";
 import clsx from "clsx";
+import { useEffect, useState } from "react";
+import ModalAttention from "../ModalAttention/ModalAttention";
+import ModalNotice from "../ModalNotice/ModalNotice";
 
 interface NoticesItemProps {
   notice: Notice;
-  openAttentionModal: () => void;
-  openModalNotice: () => void;
-  changeFullInfoNotice: (value: NoticeFull | null) => void;
+  profile?: boolean;
+  viewed?: boolean;
 }
 
 export default function NoticesItem({
   notice,
-  openAttentionModal,
-  openModalNotice,
-  changeFullInfoNotice,
+  profile,
+  viewed,
 }: NoticesItemProps) {
   const { user, isAuthenticated, setUser } = useAuthStore();
+  const [isModalAttention, setIsModalAttention] = useState(false);
+  const [isModalNotice, setIsModalNotice] = useState(false);
+  const [fullInfoNotice, setFullInfoNotice] = useState<NoticeFull | null>(null);
+
+  useEffect(() => {
+    if (!isModalNotice) {
+      setFullInfoNotice(null);
+    }
+  }, [isModalNotice]);
 
   const isFavorite = user?.noticesFavorites.some(
     (favoriteNotice) => favoriteNotice._id === notice._id,
@@ -36,7 +46,7 @@ export default function NoticesItem({
 
   const handleClickLikeBtn = async () => {
     if (!isAuthenticated) {
-      openAttentionModal();
+      setIsModalAttention(true);
       return;
     }
 
@@ -75,17 +85,17 @@ export default function NoticesItem({
 
   const handleClickLearnMoreBtn = async () => {
     if (!isAuthenticated) {
-      openAttentionModal();
+      setIsModalAttention(true);
       return;
     }
     try {
       const fullInfoNotice = await getNoticeById(notice._id);
-      changeFullInfoNotice(fullInfoNotice);
-      openModalNotice();
+      setFullInfoNotice(fullInfoNotice);
+      setIsModalNotice(true);
     } catch (error: unknown) {
       const err = error as ApiError;
 
-      changeFullInfoNotice(null);
+      setFullInfoNotice(null);
 
       toast.error(
         err.response?.data?.response?.validation?.body?.message ||
@@ -97,76 +107,95 @@ export default function NoticesItem({
   };
 
   return (
-    <li className={css.item}>
-      <div className={css.imgBox}>
-        <Image
-          src={notice.imgURL}
-          alt={notice.title}
-          fill
-          sizes="(max-width: 767px) 287px, (max-width: 1279px) 294px, 315px"
-          loading="eager"
-          className={css.img}
-        />
-      </div>
-
-      <div className={css.topBox}>
-        <h3 className={css.title}>{notice.title}</h3>
-        <div className={css.popularBox}>
-          <svg width={16} height={16} className={css.popularityIcon}>
-            <use href="/sprite.svg#star"></use>
-          </svg>
-          <p className={css.popularityNumber}>{notice.popularity}</p>
+    <>
+      <li className={clsx(css.item, profile && css.inProfile)}>
+        <div className={css.imgBox}>
+          <Image
+            src={notice.imgURL}
+            alt={notice.title}
+            fill
+            sizes="(max-width: 767px) 287px, (max-width: 1279px) 294px, 315px"
+            loading="eager"
+            className={css.img}
+          />
         </div>
-      </div>
 
-      <ul className={css.listInfo}>
-        <li className={css.itemInfo}>
-          <p className={css.titleItemInfo}>Name</p>
-          <p className={css.valueInfoPet}> {notice.name.split(" ")[0]}</p>
-        </li>
-        <li className={css.itemInfo}>
-          <p className={css.titleItemInfo}>Birthday</p>
-          <p className={css.valueInfoPet}>{reversBirthdayDate({ notice })}</p>
-        </li>
-        <li className={css.itemInfo}>
-          <p className={css.titleItemInfo}>Sex</p>
-          <p className={css.valueInfoPet}>{notice.sex}</p>
-        </li>
-        <li className={css.itemInfo}>
-          <p className={css.titleItemInfo}>Species</p>
-          <p className={css.valueInfoPet}>{notice.species}</p>
-        </li>
-        <li className={css.itemInfo}>
-          <p className={css.titleItemInfo}>Category</p>
-          <p className={css.valueInfoPet}>{notice.category}</p>
-        </li>
-      </ul>
+        <div className={css.topBox}>
+          <h3 className={css.title}>{notice.title}</h3>
+          <div className={css.popularBox}>
+            <svg width={16} height={16} className={css.popularityIcon}>
+              <use href="/sprite.svg#star"></use>
+            </svg>
+            <p className={css.popularityNumber}>{notice.popularity}</p>
+          </div>
+        </div>
 
-      <p className={css.comment}>{notice.comment}</p>
-      <p className={css.price}>
-        {notice.price ? `$${notice.price.toFixed(2)}` : "No price"}
-      </p>
+        <ul className={css.listInfo}>
+          <li className={css.itemInfo}>
+            <p className={css.titleItemInfo}>Name</p>
+            <p className={css.valueInfoPet}> {notice.name.split(" ")[0]}</p>
+          </li>
+          <li className={css.itemInfo}>
+            <p className={css.titleItemInfo}>Birthday</p>
+            <p className={css.valueInfoPet}>{reversBirthdayDate({ notice })}</p>
+          </li>
+          <li className={css.itemInfo}>
+            <p className={css.titleItemInfo}>Sex</p>
+            <p className={css.valueInfoPet}>{notice.sex}</p>
+          </li>
+          <li className={css.itemInfo}>
+            <p className={css.titleItemInfo}>Species</p>
+            <p className={css.valueInfoPet}>{notice.species}</p>
+          </li>
+          <li className={css.itemInfo}>
+            <p className={css.titleItemInfo}>Category</p>
+            <p className={css.valueInfoPet}>{notice.category}</p>
+          </li>
+        </ul>
 
-      <div className={css.btnsBox}>
-        <button
-          type="button"
-          onClick={handleClickLearnMoreBtn}
-          className={css.learnMoreBtn}
-        >
-          Learn more
-        </button>
+        <p className={css.comment}>{notice.comment}</p>
+        <p className={css.price}>
+          {notice.price ? `$${notice.price.toFixed(2)}` : "No price"}
+        </p>
 
-        <button
-          type="button"
-          aria-label="Add-remove favorite pet"
-          onClick={handleClickLikeBtn}
-          className={clsx(css.likeBtn, isFavorite && css.isFavorite)}
-        >
-          <svg width={18} height={18}>
-            <use href="/sprite.svg#heart"></use>
-          </svg>
-        </button>
-      </div>
-    </li>
+        <div className={css.btnsBox}>
+          <button
+            type="button"
+            onClick={handleClickLearnMoreBtn}
+            className={css.learnMoreBtn}
+          >
+            Learn more
+          </button>
+
+          <button
+            type="button"
+            aria-label="Add-remove favorite pet"
+            onClick={handleClickLikeBtn}
+            className={clsx(css.likeBtn, viewed && css.noBtn)}
+          >
+            {isFavorite ? (
+              <svg width={18} height={18}>
+                <use href="/sprite.svg#basket"></use>
+              </svg>
+            ) : (
+              <svg width={18} height={18}>
+                <use href="/sprite.svg#heart"></use>
+              </svg>
+            )}
+          </button>
+        </div>
+      </li>
+
+      {isModalAttention && (
+        <ModalAttention onClose={() => setIsModalAttention(false)} />
+      )}
+
+      {isModalNotice && fullInfoNotice && (
+        <ModalNotice
+          notice={fullInfoNotice}
+          onClose={() => setIsModalNotice(false)}
+        />
+      )}
+    </>
   );
 }

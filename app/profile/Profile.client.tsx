@@ -6,13 +6,14 @@ import UserCard from "@/components/UserCard/UserCard";
 import { useAuthStore } from "@/lib/store/authStore";
 import { useEffect } from "react";
 import clsx from "clsx";
+import MyNotices from "@/components/MyNotices/MyNotices";
 
 interface ProfileClientProps {
   userFull: UserFull;
 }
 
 export default function ProfileClient({ userFull }: ProfileClientProps) {
-  const { user, setUser } = useAuthStore();
+  const { setUser } = useAuthStore();
 
   useEffect(() => {
     setUser(userFull);
@@ -21,7 +22,8 @@ export default function ProfileClient({ userFull }: ProfileClientProps) {
   return (
     <section className={css.section}>
       <div className={clsx("container", css.profileContainer)}>
-        {user && <UserCard />}
+        <UserCard />
+        <MyNotices />
       </div>
     </section>
   );
