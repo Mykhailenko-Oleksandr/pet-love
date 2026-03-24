@@ -10,6 +10,7 @@ interface ModalProps {
   onClose: () => void;
   isAttentionModal?: boolean;
   isNoticesModal?: boolean;
+  isEditUserModal?: boolean;
 }
 
 export default function Modal({
@@ -17,6 +18,7 @@ export default function Modal({
   onClose,
   isAttentionModal,
   isNoticesModal,
+  isEditUserModal,
 }: ModalProps) {
   function handleClickBackdrop(e: MouseEvent<HTMLDivElement>) {
     if (e.target === e.currentTarget) onClose();
@@ -43,6 +45,7 @@ export default function Modal({
           css.modal,
           isAttentionModal && css.isAttentionModal,
           isNoticesModal && css.isNoticesModal,
+          isEditUserModal && css.isEditUserModal,
         )}
       >
         <button

@@ -12,13 +12,12 @@ import { ApiError } from "@/app/api/api";
 import PetsBlock from "../PetsBlock/PetsBlock";
 import LogOutBtn from "../LogOutBtn/LogOutBtn";
 import ModalApproveAction from "../ModalApproveAction/ModalApproveAction";
+import ModalEditUser from "../ModalEditUser/ModalEditUser";
 
 export default function UserCard() {
   const { user, setUser } = useAuthStore();
   const [modalEdit, setModalEdit] = useState(false);
   const [approveModal, setApproveModal] = useState(false);
-
-  console.log(user);
 
   async function handleFileChange(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
@@ -125,6 +124,8 @@ export default function UserCard() {
       {approveModal && (
         <ModalApproveAction onClose={() => setApproveModal(false)} />
       )}
+
+      {modalEdit && <ModalEditUser onClose={() => setModalEdit(false)} />}
     </>
   );
 }
