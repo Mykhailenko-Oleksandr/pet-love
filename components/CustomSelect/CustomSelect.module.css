@@ -121,3 +121,150 @@
     line-height: 125%;
   }
 }
+
+/* Styles for select in AddPetPage*/
+:global(.customSelectAddPet__control) {
+  border: 1px solid rgba(38, 38, 38, 0.15) !important;
+  cursor: pointer !important;
+  border-radius: 30px !important;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  color: #262626;
+  text-transform: capitalize;
+
+  min-height: unset !important;
+
+  &:hover,
+  &:focus {
+    border-color: #f6b83d !important;
+  }
+}
+
+:global(
+  .customSelectAddPet__control:has(
+    .customSelectAddPet__value-container--has-value
+  )
+) {
+  border-color: #f6b83d !important;
+}
+
+:global(.customSelectAddPet__control--is-focused) {
+  box-shadow: none !important;
+}
+
+:global(.customSelectAddPet__value-container) {
+  padding: 11px !important;
+  padding-right: unset !important;
+}
+
+:global(.customSelectAddPet__single-value) {
+  margin: 0 !important;
+  color: #262626 !important;
+}
+
+:global(.customSelectAddPet__placeholder) {
+  margin: 0 !important;
+}
+
+:global(.customSelectAddPet__indicator-separator) {
+  display: none;
+}
+
+:global(.customSelectAddPet__indicator) {
+  padding: 11px !important;
+
+  & svg {
+    fill: #262626;
+    transition: transform 300ms ease;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+:global(
+  .customSelectAddPet__control--menu-is-open .customSelectAddPet__indicator
+) {
+  & svg {
+    transform: rotate(180deg);
+  }
+}
+
+:global(.customSelectAddPet__menu) {
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 15px !important;
+  box-shadow: none !important;
+  margin-top: 4px !important;
+  background-color: #fff !important;
+  padding: 8px 12px;
+}
+
+:global(.customSelectAddPet__menu-list) {
+  padding-top: unset !important;
+  padding-bottom: unset !important;
+  max-height: 78px !important;
+}
+
+:global(.customSelectAddPet__option) {
+  cursor: pointer !important;
+
+  font-weight: 500;
+  font-size: 14px !important;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  color: rgba(38, 38, 38, 0.6) !important;
+  text-transform: capitalize;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 4px 0 !important;
+
+  transition: color 300ms ease;
+}
+
+:global(.customSelectAddPet__option--is-focused) {
+  background-color: transparent !important;
+  color: #f9b020 !important;
+}
+
+:global(.customSelectAddPet__option--is-selected) {
+  background-color: transparent !important;
+  color: #f6b83d !important;
+}
+
+@media only screen and (min-width: 768px) {
+  :global(.customSelectAddPet__control) {
+    font-size: 16px;
+    line-height: 125%;
+  }
+
+  :global(.customSelectAddPet__value-container) {
+    padding: 15px !important;
+    padding-right: unset !important;
+  }
+
+  :global(.customSelectAddPet__indicator) {
+    padding: 15px !important;
+
+    & svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  :global(.customSelectAddPet__menu-list) {
+    max-height: 142px !important;
+  }
+
+  :global(.customSelectAddPet__menu) {
+    padding: 10px 14px;
+  }
+
+  :global(.customSelectAddPet__option) {
+    font-size: 16px !important;
+    line-height: 125%;
+  }
+}

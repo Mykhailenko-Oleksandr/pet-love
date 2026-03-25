@@ -7,6 +7,10 @@
   border-radius: 30px;
   background-color: #f6b83d;
   overflow: hidden;
+
+  &.addPetPage {
+    height: 213px;
+  }
 }
 
 .figureIcon {
@@ -16,6 +20,11 @@
 
   fill: rgba(255, 255, 255, 0.1);
   z-index: 5;
+
+  &.inAddPetPage {
+    width: 332px;
+    height: unset;
+  }
 }
 
 .figureIconDesc {
@@ -38,6 +47,16 @@
     width: 451px;
     height: 450px;
   }
+
+  &.imgDogAdd {
+    top: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    object-fit: contain;
+
+    width: 291px;
+    height: 291px;
+  }
 }
 
 .petInfoBox {
@@ -52,6 +71,11 @@
     border-radius: 60px;
     padding: 32px;
     height: 302px;
+
+    &.addPetPage {
+      padding: 0;
+      height: 248px;
+    }
   }
 
   .img {
@@ -62,6 +86,12 @@
       left: unset;
       right: 47px;
     }
+
+    &.imgDogAdd {
+      top: -22px;
+      width: 375px;
+      height: 375px;
+    }
   }
 
   .figureIcon {
@@ -70,6 +100,10 @@
 
     width: 530px;
     height: 635px;
+
+    &.inAddPetPage {
+      width: 572px;
+    }
   }
 
   .petInfoBox {
@@ -167,6 +201,12 @@
       width: 787px;
       height: 786px;
     }
+
+    &.imgDogAdd {
+      top: 6px;
+      width: 648px;
+      height: 648px;
+    }
   }
 
   .figureIcon {
@@ -181,5 +221,11 @@
 
     fill: rgba(255, 255, 255, 0.1);
     z-index: 5;
+
+    &.inAddPetPage {
+      width: 572px;
+      height: unset;
+      right: 4px;
+    }
   }
 }

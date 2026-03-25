@@ -41,11 +41,20 @@ interface LoginRequest {
   password: string;
 }
 
-interface updateUserRequest {
+interface UpdateUserRequest {
   name?: string;
   email?: string;
   phone?: string;
   avatar?: string;
+}
+
+interface AddPetRequest {
+  name: string;
+  title: string;
+  imgURL: string;
+  species: string;
+  birthday: string;
+  sex: string;
 }
 
 // Auth
@@ -174,8 +183,14 @@ export async function uploadImage(file: File): Promise<string> {
   return res.data.secure_url;
 }
 
-export async function updateUser(body: updateUserRequest) {
+export async function updateUser(body: UpdateUserRequest) {
   const res = await nextServer.patch<UserFull>("users/current/edit", body);
+
+  return res.data;
+}
+
+export async function addPets(body: AddPetRequest) {
+  const res = await nextServer.post<UserFull>("users/current/pets/add", body);
 
   return res.data;
 }

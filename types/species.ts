@@ -13,3 +13,20 @@ export type Species =
   | "butterfly"
   | "spider"
   | "scorpion";
+
+export const SpeciesArray = [
+  "dog",
+  "cat",
+  "monkey",
+  "bird",
+  "snake",
+  "turtle",
+  "lizard",
+  "frog",
+  "fish",
+  "ants",
+  "bees",
+  "butterfly",
+  "spider",
+  "scorpion",
+];

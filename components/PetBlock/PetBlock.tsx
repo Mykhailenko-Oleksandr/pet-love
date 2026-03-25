@@ -3,14 +3,14 @@ import css from "./PetBlock.module.css";
 import clsx from "clsx";
 
 interface PetBlockProps {
-  page: "login" | "register";
+  page: "login" | "register" | "addPet";
 }
 
 export default function PetBlock({ page }: PetBlockProps) {
   return (
-    <div className={css.box}>
+    <div className={clsx(css.box, page === "addPet" && css.addPetPage)}>
       <svg
-        className={css.figureIcon}
+        className={clsx(css.figureIcon, page === "addPet" && css.inAddPetPage)}
         width="312"
         height="375"
         viewBox="0 0 312 375"
@@ -21,7 +21,10 @@ export default function PetBlock({ page }: PetBlockProps) {
       </svg>
 
       <svg
-        className={css.figureIconDesc}
+        className={clsx(
+          css.figureIconDesc,
+          page === "addPet" && css.inAddPetPage,
+        )}
         width="530"
         height="601"
         viewBox="0 0 530 601"
@@ -55,38 +58,52 @@ export default function PetBlock({ page }: PetBlockProps) {
         />
       )}
 
-      <div className={css.petInfoBox}>
-        <div className={css.iconPetBox}>
-          <Image
-            src={
-              page === "register"
-                ? "/images/cat-icon.png"
-                : "/images/dog-icon.png"
-            }
-            alt={page === "register" ? "Cat avatar" : "Dog avatar"}
-            width={32}
-            height={32}
-          />
-        </div>
-        <div className={css.infoBox}>
-          <div className={css.topInfoBox}>
-            <p className={css.petName}>
-              {page === "register" ? "Jack" : "Rich"}
-            </p>
-            <div className={css.petBirthdayBox}>
-              <p className={css.petBirthday}>Birthday:</p>
-              <p className={css.petBirthdayData}>
-                {page === "register" ? "18.10.2021" : "21.09.2020"}
-              </p>
-            </div>
+      {page === "addPet" && (
+        <Image
+          src="/images/dog-add.png"
+          alt="Dog"
+          width={648}
+          height={648}
+          sizes="(max-width: 767px) 291px, (max-width: 1279px) 375px, 648px"
+          loading="eager"
+          className={clsx(css.img, css.imgDogAdd)}
+        />
+      )}
+
+      {page !== "addPet" && (
+        <div className={css.petInfoBox}>
+          <div className={css.iconPetBox}>
+            <Image
+              src={
+                page === "register"
+                  ? "/images/cat-icon.png"
+                  : "/images/dog-icon.png"
+              }
+              alt={page === "register" ? "Cat avatar" : "Dog avatar"}
+              width={32}
+              height={32}
+            />
           </div>
-          <p className={css.descriptionPet}>
-            {page === "register"
-              ? "Jack is a gray Persian cat with green eyes. He loves to be pampered and groomed, and enjoys playing with toys."
-              : "Rich would be the perfect addition to an active family that loves to play and go on walks. I bet he would love having a doggy playmate too!"}
-          </p>
+          <div className={css.infoBox}>
+            <div className={css.topInfoBox}>
+              <p className={css.petName}>
+                {page === "register" ? "Jack" : "Rich"}
+              </p>
+              <div className={css.petBirthdayBox}>
+                <p className={css.petBirthday}>Birthday:</p>
+                <p className={css.petBirthdayData}>
+                  {page === "register" ? "18.10.2021" : "21.09.2020"}
+                </p>
+              </div>
+            </div>
+            <p className={css.descriptionPet}>
+              {page === "register"
+                ? "Jack is a gray Persian cat with green eyes. He loves to be pampered and groomed, and enjoys playing with toys."
+                : "Rich would be the perfect addition to an active family that loves to play and go on walks. I bet he would love having a doggy playmate too!"}
+            </p>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
