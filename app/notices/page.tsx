@@ -11,6 +11,20 @@ import {
   getNotices,
   getSpecies,
 } from "@/lib/api/serverApi";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Notices",
+  description:
+    "Browse pet notices on PetLove. Discover adoption opportunities, lost and found pets, and community announcements.",
+  openGraph: {
+    title: "Notices – PetLove",
+    description:
+      "Explore the latest pet notices including adoption listings, lost pets, and important community updates.",
+    url: "https://pet-love-rust.vercel.app/notices",
+    images: [{ url: "/images/og.webp" }],
+  },
+};
 
 const page = 1;
 const searchWord = "";

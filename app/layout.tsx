@@ -18,12 +18,14 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   title: "PetLove",
-  description: "",
+  description:
+    "PetLove is a platform for pet lovers. Discover pets, share stories, and stay updated with the latest animal news.",
   openGraph: {
-    title: "",
-    description: "",
-    url: "https://",
-    images: [{ url: "" }],
+    title: "PetLove – Take good care of your small pets",
+    description:
+      "Find your perfect companion, connect with other pet lovers, and explore the latest updates on pets.",
+    url: "https://pet-love-rust.vercel.app",
+    images: [{ url: "/images/og.webp" }],
   },
 };
 
