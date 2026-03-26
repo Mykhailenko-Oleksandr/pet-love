@@ -194,3 +194,11 @@ export async function addPets(body: AddPetRequest) {
 
   return res.data;
 }
+
+export async function deletePets(id: string) {
+  const res = await nextServer.delete<UserFull>(
+    `users/current/pets/remove/${id}`,
+  );
+
+  return res.data;
+}

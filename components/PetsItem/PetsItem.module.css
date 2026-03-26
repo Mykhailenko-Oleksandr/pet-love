@@ -70,6 +70,36 @@
   text-transform: capitalize;
 }
 
+.deleteBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #fff4df;
+
+  transition: background-color 300ms ease;
+
+  & svg {
+    fill: none;
+    stroke: #f6b83d;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: #fbe7c1;
+  }
+
+  &:active {
+    background-color: #fff4df;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .item {
     width: unset;
@@ -84,6 +114,16 @@
 
   .title {
     margin-bottom: 12px;
+  }
+
+  .deleteBtn {
+    width: 32px;
+    height: 32px;
+
+    & svg {
+      width: 18px;
+      height: 18px;
+    }
   }
 }
 
@@ -106,5 +146,12 @@
 
   .listInfoPet {
     justify-content: space-between;
+  }
+
+  .deleteBtn {
+    top: 20px;
+    right: 20px;
+    width: 38px;
+    height: 38px;
   }
 }
