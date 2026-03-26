@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useAuthStore } from "@/lib/store/authStore";
 import {
   addFavoriteNotice,
-  currentUser,
+  getCurrentFullUser,
   getNoticeById,
   removeFavoriteNotice,
 } from "@/lib/api/clientApi";
@@ -53,7 +53,7 @@ export default function NoticesItem({
     if (!isFavorite) {
       try {
         await addFavoriteNotice(notice._id);
-        const updatedUser = await currentUser();
+        const updatedUser = await getCurrentFullUser();
         setUser(updatedUser);
       } catch (error: unknown) {
         const err = error as ApiError;
@@ -68,7 +68,7 @@ export default function NoticesItem({
     } else {
       try {
         await removeFavoriteNotice(notice._id);
-        const updatedUser = await currentUser();
+        const updatedUser = await getCurrentFullUser();
         setUser(updatedUser);
       } catch (error: unknown) {
         const err = error as ApiError;
