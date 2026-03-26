@@ -125,7 +125,7 @@ export default function AddPetForm({ species }: Props) {
     }
     try {
       const imgUrl = await uploadImage(file);
-      setValue("imgURL", imgUrl);
+      setValue("imgURL", imgUrl, { shouldValidate: true, shouldDirty: true });
       setUrlPhoto(imgUrl);
     } catch (error: unknown) {
       const err = error as ApiError;
