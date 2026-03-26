@@ -29,7 +29,7 @@ export default function HeroSection() {
           alt="Women and dog"
           width={704}
           height={496}
-          sizes="(min-width: 768px) and (max-width: 1279) 100vh"
+          sizes="(min-width: 768px) and (max-width: 1279px) 100vh"
           className={css.imgTab}
         />
         <Image

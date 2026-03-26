@@ -25,22 +25,24 @@ export default function RadioButton({
     }
   }
   return (
-    <label className={css.label}>
-      <input
-        type="radio"
-        name={name}
-        value={value}
-        onClick={handleRadioClick}
-        checked={currentSort === value}
-        onChange={() => {}}
-        className={clsx(css.radio)}
-      />
-      {label}
+    <div className={css.wrap}>
+      <label className={css.label}>
+        <input
+          type="radio"
+          name={name}
+          value={value}
+          onClick={handleRadioClick}
+          checked={currentSort === value}
+          onChange={() => {}}
+          className={clsx(css.radio)}
+        />
+        {label}
+      </label>
       <button type="button" onClick={() => onChange("")} className={css.btn}>
         <svg width={18} height={18}>
           <use href="/sprite.svg#close"></use>
         </svg>
       </button>
-    </label>
+    </div>
   );
 }

@@ -158,11 +158,11 @@ export default function AddPetForm({ species }: Props) {
               onChange={() => {}}
               className={css.defaultRadio}
             />
-            <div className={clsx(css.sexBtn, css.female)}>
+            <span className={clsx(css.sexBtn, css.female)}>
               <svg width={20} height={20}>
                 <use href="/sprite.svg#female"></use>
               </svg>
-            </div>
+            </span>
           </label>
 
           <label className={css.sexLabel}>
@@ -175,11 +175,11 @@ export default function AddPetForm({ species }: Props) {
               onChange={() => {}}
               className={css.defaultRadio}
             />
-            <div className={clsx(css.sexBtn, css.male)}>
+            <span className={clsx(css.sexBtn, css.male)}>
               <svg width={20} height={20}>
                 <use href="/sprite.svg#male"></use>
               </svg>
-            </div>
+            </span>
           </label>
 
           <label className={css.sexLabel}>
@@ -192,11 +192,11 @@ export default function AddPetForm({ species }: Props) {
               onChange={() => {}}
               className={css.defaultRadio}
             />
-            <div className={clsx(css.sexBtn, css.multiple)}>
+            <span className={clsx(css.sexBtn, css.multiple)}>
               <svg width={20} height={20}>
                 <use href="/sprite.svg#male-female"></use>
               </svg>
-            </div>
+            </span>
           </label>
         </fieldset>
         {urlPhoto ? (

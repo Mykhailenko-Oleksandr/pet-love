@@ -57,21 +57,23 @@ export default function Pagination({
         </button>
       </div>
 
-      <ReactPaginate
-        pageCount={totalPages}
-        pageRangeDisplayed={pageRangeDisplayed}
-        marginPagesDisplayed={0}
-        onPageChange={({ selected }) => updatePage(selected + 1)}
-        forcePage={page - 1}
-        containerClassName={css.pagination}
-        previousClassName={css.previous}
-        nextClassName={css.next}
-        pageLinkClassName={css.link}
-        activeLinkClassName={css.active}
-        breakClassName={clsx(css.break, page !== 1 && css.notFirstPage)}
-        nextLabel={null}
-        previousLabel={null}
-      />
+      <nav aria-label="Pagination">
+        <ReactPaginate
+          pageCount={totalPages}
+          pageRangeDisplayed={pageRangeDisplayed}
+          marginPagesDisplayed={0}
+          onPageChange={({ selected }) => updatePage(selected + 1)}
+          forcePage={page - 1}
+          containerClassName={css.pagination}
+          previousClassName={css.previous}
+          nextClassName={css.next}
+          pageLinkClassName={css.link}
+          activeLinkClassName={css.active}
+          breakClassName={clsx(css.break, page !== 1 && css.notFirstPage)}
+          nextLabel={null}
+          previousLabel={null}
+        />
+      </nav>
 
       <div className={css.prevNextBtnsBox}>
         <button

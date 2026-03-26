@@ -94,7 +94,7 @@ export default function LocationsSelect({
     }),
   ];
   return (
-    <label className={css.label}>
+    <div className={css.wrap}>
       <Select<IOption>
         className={css.locationsSelectBox}
         classNamePrefix="locationsSelect"
@@ -127,6 +127,6 @@ export default function LocationsSelect({
           </svg>
         </button>
       </div>
-    </label>
+    </div>
   );
 }

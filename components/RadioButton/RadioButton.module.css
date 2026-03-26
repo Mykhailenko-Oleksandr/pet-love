@@ -1,4 +1,4 @@
-.label {
+.wrap {
   position: relative;
   display: flex;
   align-items: center;
@@ -9,7 +9,10 @@
   padding: 12px;
   background-color: #fff;
   cursor: pointer;
+}
 
+.label {
+  cursor: pointer;
   font-size: 14px;
   line-height: 129%;
   letter-spacing: -0.03em;
@@ -44,7 +47,7 @@
   pointer-events: none;
 }
 
-label:has(.radio:checked) {
+.wrap:has(.radio:checked) {
   background-color: #f6b83d;
   color: #fff;
 
@@ -54,9 +57,14 @@ label:has(.radio:checked) {
 }
 
 @media only screen and (min-width: 768px) {
-  .label {
+  .wrap {
     gap: 8px;
     padding: 14px;
+    font-size: 16px;
+    line-height: 125%;
+  }
+
+  .label {
     font-size: 16px;
     line-height: 125%;
   }

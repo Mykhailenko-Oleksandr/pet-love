@@ -1,6 +1,7 @@
 import { News } from "@/types/news";
 import css from "./NewsItem.module.css";
 import Image from "next/image";
+import Link from "next/link";
 
 interface NewsItemProps {
   news: News;
@@ -15,6 +16,8 @@ export default function NewsItem({ news }: NewsItemProps) {
 
     return `${day}/${month}/${year}`;
   }
+  console.log(news);
+
   return (
     <li className={css.item}>
       <div className={css.imgBox}>
@@ -32,9 +35,9 @@ export default function NewsItem({ news }: NewsItemProps) {
 
       <div className={css.bottomBox}>
         <p className={css.date}>{reversDate(news.date)}</p>
-        <button type="button" className={css.readMoreBtn}>
+        <Link href={news.url} target="_blank" className={css.readMoreBtn}>
           Read more
-        </button>
+        </Link>
       </div>
     </li>
   );
