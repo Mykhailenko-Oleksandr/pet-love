@@ -92,7 +92,7 @@ export default function ModalNotice({ onClose, notice }: ModalNoticeProps) {
           </li>
           <li className={css.itemInfo}>
             <p className={css.titleItemInfo}>Birthday</p>
-            <p className={css.valueInfoPet}>{reversBirthdayDate(notice)}</p>
+            <p className={css.valueInfoPet}>{reversBirthdayDate({ notice })}</p>
           </li>
           <li className={css.itemInfo}>
             <p className={css.titleItemInfo}>Sex</p>

@@ -9,8 +9,6 @@ type Props = {
 };
 
 export async function DELETE(request: Request, { params }: Props) {
-  console.log("ok");
-
   try {
     const cookieStore = await cookies();
     const accessToken = cookieStore.get("accessToken")?.value;
