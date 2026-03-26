@@ -4,7 +4,7 @@ import { NewsResponse, NoticesRequest, NoticesResponse } from "./clientApi";
 import { Friends } from "@/types/friends";
 import { Location } from "@/types/location";
 import { Category } from "@/types/category";
-import { UserFull } from "@/types/user";
+import { User, UserFull } from "@/types/user";
 
 export async function getNews(keyword: string, page: number, limit?: number) {
   const cookieStore = await cookies();
@@ -125,6 +125,16 @@ export async function getCurrentFullUser() {
   const cookieStore = await cookies();
 
   const res = await nextServer.get<UserFull>("/users/current/full", {
+    headers: {
+      Cookie: cookieStore.toString(),
+    },
+  });
+  return res.data;
+}
+
+export async function currentUser() {
+  const cookieStore = await cookies();
+  const res = await nextServer.get<User>("/users/current", {
     headers: {
       Cookie: cookieStore.toString(),
     },

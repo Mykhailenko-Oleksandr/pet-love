@@ -73,11 +73,6 @@ export async function logoutUser() {
   return res.data;
 }
 
-export async function currentUser() {
-  const res = await nextServer.get<User>("/users/current");
-  return res.data;
-}
-
 export async function getCurrentFullUser() {
   const res = await nextServer.get<UserFull>("/users/current/full");
   return res.data;

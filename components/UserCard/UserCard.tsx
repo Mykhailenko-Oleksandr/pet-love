@@ -1,11 +1,10 @@
 "use client";
 
-import { ChangeEvent, useState } from "react";
-import EditUserBtn from "../EditUserBtn/EditUserBtn";
 import css from "./UserCard.module.css";
+import { ChangeEvent, useState } from "react";
 import Image from "next/image";
 import clsx from "clsx";
-import { updateUser, uploadImage } from "@/lib/api/clientApi";
+import EditUserBtn from "../EditUserBtn/EditUserBtn";
 import toast from "react-hot-toast";
 import { useAuthStore } from "@/lib/store/authStore";
 import { ApiError } from "@/app/api/api";
@@ -13,6 +12,7 @@ import PetsBlock from "../PetsBlock/PetsBlock";
 import LogOutBtn from "../LogOutBtn/LogOutBtn";
 import ModalApproveAction from "../ModalApproveAction/ModalApproveAction";
 import ModalEditUser from "../ModalEditUser/ModalEditUser";
+import { updateUser, uploadImage } from "@/lib/api/clientApi";
 
 export default function UserCard() {
   const { user, setUser } = useAuthStore();
@@ -58,30 +58,34 @@ export default function UserCard() {
         {user && (
           <>
             {user.avatar ? (
-              <label htmlFor="uploadPhoto" className={css.label}>
+              <>
                 <div className={css.avatarBox}>
-                  <Image
-                    src={user.avatar}
-                    alt="Avatar"
-                    fill
-                    sizes="(max-width: 767px) 94px, 110px"
-                  />
+                  <label htmlFor="uploadPhoto" className={css.label}>
+                    <Image
+                      src={user.avatar}
+                      alt="Avatar"
+                      fill
+                      sizes="(max-width: 767px) 94px, 110px"
+                    />
+                  </label>
                 </div>
-                <input
-                  type="file"
-                  id="uploadPhoto"
-                  accept="image/*"
-                  onChange={handleFileChange}
-                />
-              </label>
+                <label htmlFor="uploadPhoto" className={css.label}>
+                  <input
+                    type="file"
+                    id="uploadPhoto"
+                    accept="image/*"
+                    onChange={handleFileChange}
+                  />
+                </label>
+              </>
             ) : (
               <div className={css.defaultAvatarBox}>
                 <label htmlFor="uploadPhoto">
-                  <div className={css.defaultAvatar}>
+                  <span className={css.defaultAvatar}>
                     <svg width={40} height={40}>
                       <use href="/sprite.svg#user"></use>
                     </svg>
-                  </div>
+                  </span>
                 </label>
 
                 <label className={css.label}>
