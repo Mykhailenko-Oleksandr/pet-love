@@ -8,7 +8,7 @@ import { reversBirthdayDate } from "@/utils/reverseBirthdayDate";
 import clsx from "clsx";
 import {
   addFavoriteNotice,
-  currentUser,
+  getCurrentFullUser,
   removeFavoriteNotice,
 } from "@/lib/api/clientApi";
 import { ApiError } from "@/app/api/api";
@@ -34,7 +34,7 @@ export default function ModalNotice({ onClose, notice }: ModalNoticeProps) {
     if (!isFavorite) {
       try {
         await addFavoriteNotice(notice._id);
-        const updatedUser = await currentUser();
+        const updatedUser = await getCurrentFullUser();
         setUser(updatedUser);
       } catch (error: unknown) {
         const err = error as ApiError;
@@ -49,7 +49,7 @@ export default function ModalNotice({ onClose, notice }: ModalNoticeProps) {
     } else {
       try {
         await removeFavoriteNotice(notice._id);
-        const updatedUser = await currentUser();
+        const updatedUser = await getCurrentFullUser();
         setUser(updatedUser);
       } catch (error: unknown) {
         const err = error as ApiError;
