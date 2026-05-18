@@ -4,18 +4,24 @@
 
 ## 🚀 Features
 
-- **Teacher Catalog**: Browse teacher profiles with photos, experience, ratings, and reviews.
-- **Filters**: Narrow down teachers by language, level, and price.
-- **Pagination**: Load teachers in pages for smooth navigation.
-- **Favorites**: Save your favorite teachers for quick access.
-- **Authentication**: Register, log in, and log out using Firebase Auth.
-- **Secure Data Storage**: Teacher and user data stored in Firebase Realtime Database.
+- **Notices Catalog**: Browse pet notices with photos, descriptions, and contact details.
+- **Categories & Filters**: Search by categories (adoption, lost, found) and apply filters.
+- **Favorites**: Save notices to your favorites list for quick access.
+- **Authentication**: Secure login and registration system.
+- **Forms**: Built with React Hook Form and Yup validation.
+- **Pagination**: Smooth navigation through notices.
+- **Notifications**: Toast messages for user feedback.
+- **Responsive UI**: Optimized design for both mobile and desktop devices.
 
 ## 🛠️ Tech Stack
 
 - **Next.js 16 (App Router)** — modern React framework.
 - **React Query (TanStack Query)** — data fetching and caching.
-- **Firebase Auth & Realtime Database** — authentication and data storage.
+- **Axios** — HTTP client for API requests.
+- **React Hook Form** — form handling with validation via Yup.
+- **React Select** — customizable select inputs.
+- **React Datepicker** — date selection component.
+- **React Paginate** — pagination component.
 - **TypeScript** — strict typing for reliable code.
 - **CSS Modules** — component-level styling.
 - **Zustand** — lightweight state management for global app state.
